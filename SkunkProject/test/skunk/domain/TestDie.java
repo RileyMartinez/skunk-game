@@ -1,14 +1,13 @@
 package skunk.domain;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestDie
-{
+public class TestDie {
 
 	@Test
-	public void test()
-	{
+	public void test() {
 		fail("Not yet implemented");
 	}
 
