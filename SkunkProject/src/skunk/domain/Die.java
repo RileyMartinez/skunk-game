@@ -1,3 +1,4 @@
+package skunk.domain;
 
 public class Die
 {
