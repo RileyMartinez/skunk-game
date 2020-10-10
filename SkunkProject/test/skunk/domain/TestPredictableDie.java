@@ -26,4 +26,9 @@ public class TestPredictableDie {
 		assertEquals(1, die.getLastRoll());
 	}
 
+	@Test
+	(expected = RuntimeException.class)
+	public void test_predictable_die_with_empty_initial_int_array() {
+		fail();
+	}
 }
