@@ -29,6 +29,7 @@ public class TestPredictableDie {
 	@Test
 	(expected = RuntimeException.class)
 	public void test_predictable_die_with_empty_initial_int_array() {
-		fail();
+		PredictableDie die = new PredictableDie(new int[] {});
+		die.roll();
 	}
 }
