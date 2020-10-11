@@ -18,6 +18,8 @@ public class PredictableDice {
 		for (int i = 0; i < is.length; i++) {
 			if (is[i] < 2) {
 				throw new RuntimeException("Dice can't roll a value less than 2.");
+			} else if (is[i] > 12) {
+				throw new RuntimeException("Dice can't roll a value greater than 12.");
 			}
 			ceilingRoll[i] = (int)Math.ceil((double)is[i]/2);
 			floorRoll[i] = (int)Math.floor((double)is[i]/2);
