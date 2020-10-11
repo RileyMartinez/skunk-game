@@ -31,4 +31,10 @@ public class TestPredictableDice {
 		PredictableDice dice = new PredictableDice(new int[] {});
 		dice.roll();
 	}
+	
+	@Test
+	public void test_predictable_dice_with_values_less_than_2() {
+		fail();
+	}
+	
 }
