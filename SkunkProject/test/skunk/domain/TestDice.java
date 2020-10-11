@@ -39,6 +39,16 @@ public class TestDice {
 	
 	@Test
 	public void test_dice_roll_skunk_but_not_deuce() {
-		fail("Test not implemented.");
+		boolean isSkunkNotDeuce = false;
+		Dice dice = new Dice();
+		while (!isSkunkNotDeuce) {
+			dice.roll();
+			if (dice.getIsSkunk() && !dice.getIsDeuce()) {
+				isSkunkNotDeuce = true;
+			}
+		}
+		assertTrue("first value", dice.getDie1().getLastRoll() == 1 || dice.getDie2().getLastRoll() == 1);
+		assertFalse("second value", dice.getDie1().getLastRoll() == 1 && dice.getDie2().getLastRoll() == 1);
+		assertTrue("third value", dice.getIsSkunk() && !dice.getIsDeuce());
 	}
 }
