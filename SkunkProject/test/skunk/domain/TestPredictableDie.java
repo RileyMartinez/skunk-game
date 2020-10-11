@@ -26,10 +26,16 @@ public class TestPredictableDie {
 		assertEquals(1, die.getLastRoll());
 	}
 
-	@Test
-	(expected = RuntimeException.class)
+	@Test (expected = RuntimeException.class)
 	public void test_predictable_die_with_empty_initial_int_array() {
 		PredictableDie die = new PredictableDie(new int[] {});
 		die.roll();
 	}
+	
+	@Test (expected = RuntimeException.class)
+	public void test_predictable_die_with_value_beyond_lower_bound() {
+		PredictableDie die = new PredictableDie(new int[] {0});
+		die.roll();
+	}
+	
 }
