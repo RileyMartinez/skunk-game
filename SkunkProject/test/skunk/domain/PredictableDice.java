@@ -7,6 +7,7 @@ public class PredictableDice {
 	private PredictableDie ceilingDie;
 	private PredictableDie floorDie;
 	private boolean isSkunk;
+	private boolean isDeuce;
 	
 	
 	public PredictableDice(int[] is) {
@@ -39,6 +40,14 @@ public class PredictableDice {
 	public void checkLastRoll() {
 		if (ceilingDie.getLastRoll() == 1 || floorDie.getLastRoll() == 1) {
 			this.isSkunk = true;
+			if (ceilingDie.getLastRoll() == 1 && floorDie.getLastRoll() == 1) {
+				this.isDeuce = true;
+			} else {
+				this.isDeuce = false;
+			}
+		} else {
+			this.isSkunk = false;
+			this.isDeuce = false;
 		}
 	}
 	
@@ -48,6 +57,10 @@ public class PredictableDice {
 
 	public boolean getIsSkunk() {
 		return isSkunk;
+	}
+
+	public boolean getIsDeuce() {
+		return isDeuce;
 	}
 	
 }

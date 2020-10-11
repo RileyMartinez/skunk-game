@@ -50,4 +50,10 @@ public class TestPredictableDice {
 		assertTrue(dice.getIsSkunk());
 	}
 	
+	@Test
+	public void test_predictable_dice_roll_deuce() {
+		PredictableDice dice = new PredictableDice(new int[] {2});
+		dice.roll();
+		assertTrue(dice.getIsDeuce());
+	}
 }
