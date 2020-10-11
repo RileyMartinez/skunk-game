@@ -19,6 +19,10 @@ public class TestPredictableDice {
 	
 	@Test
 	public void test_predictable_dice_2_more_than_once() {
-		fail();
+		PredictableDice dice = new PredictableDice(new int[] {2});
+		dice.roll();
+		assertEquals(2, dice.getLastRoll());
+		dice.roll();
+		assertEquals(2, dice.getLastRoll());
 	}
 }
