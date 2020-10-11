@@ -26,8 +26,9 @@ public class TestPredictableDice {
 		assertEquals(2, dice.getLastRoll());
 	}
 	
-	@Test
+	@Test (expected = RuntimeException.class)
 	public void test_predictable_dice_with_empty_initial_int_array() {
-		fail();
+		PredictableDice dice = new PredictableDice(new int[] {});
+		dice.roll();
 	}
 }

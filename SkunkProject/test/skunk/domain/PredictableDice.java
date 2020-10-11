@@ -9,6 +9,9 @@ public class PredictableDice {
 	private PredictableDie floorDie;
 	
 	public PredictableDice(int[] is) {
+		if (is.length == 0) {
+			throw new RuntimeException();
+		}
 		ceilingRoll = new int[is.length];
 		floorRoll = new int[is.length];
 		
