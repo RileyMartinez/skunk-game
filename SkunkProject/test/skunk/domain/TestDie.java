@@ -17,7 +17,9 @@ public class TestDie {
 	
 	@Test
 	public void test_die_to_string() {
-		fail("Not yet implemented.");
+		Die die = new Die();
+		String expectedToString = "Die: " + die.getLastRoll();
+		assertEquals(die.toString(), expectedToString);
 	}
 
 }
