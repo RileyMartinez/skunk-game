@@ -20,6 +20,7 @@ public class Dice {
 	private Die die1;
 	private Die die2;
 	private Boolean isSkunk;
+	private boolean isDeuce;
 
 	// Constructors (object initializers) also can be declared anywhere
 	// Convention: after instance fields/variables
@@ -27,7 +28,6 @@ public class Dice {
 	public Dice() {
 		// initialize instance variables die1 and die2 by
 		// creating a new instance of each
-		this.isSkunk = false;
 		this.die1 = new Die();
 		this.die2 = new Die();
 		this.roll();
@@ -49,11 +49,31 @@ public class Dice {
 	public void checkLastRoll() {
 		if (die1.getLastRoll() == 1 || die2.getLastRoll() == 1) {
 			this.isSkunk = true;
+			if (die1.getLastRoll() == 1 && die2.getLastRoll() == 1) {
+				this.isDeuce = true;
+			} else {
+				this.isDeuce = false;
+			}
+		} else {
+			this.isSkunk = false;
+			this.isDeuce = false;
 		}
 	}
 	
 	public Boolean getIsSkunk() {
 		return isSkunk;
+	}
+	
+	public boolean getIsDeuce() {
+		return isDeuce;
+	}
+	
+	public Die getDie1() {
+		return die1;
+	}
+
+	public Die getDie2() {
+		return die2;
 	}
 
 	public void roll() {
@@ -75,6 +95,7 @@ public class Dice {
 	public String toString() {
 		return "Dice with last roll: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
 	}
+
 
 	// static methods can go anywhere - but at end is one convention
 	
