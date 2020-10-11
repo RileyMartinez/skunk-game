@@ -45,7 +45,9 @@ public class TestPredictableDice {
 	
 	@Test
 	public void test_predictable_dice_roll_skunk() {
-		fail("Not yet implemented.");
+		PredictableDice dice = new PredictableDice(new int[] {3});
+		dice.roll();
+		assertTrue(dice.getIsSkunk());
 	}
 	
 }

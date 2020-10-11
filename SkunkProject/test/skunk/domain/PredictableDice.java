@@ -6,6 +6,7 @@ public class PredictableDice {
 	private int lastRoll;
 	private PredictableDie ceilingDie;
 	private PredictableDie floorDie;
+	private boolean isSkunk;
 	
 	
 	public PredictableDice(int[] is) {
@@ -32,10 +33,21 @@ public class PredictableDice {
 		ceilingDie.roll();
 		floorDie.roll();
 		this.lastRoll = ceilingDie.getLastRoll() + floorDie.getLastRoll();
+		checkLastRoll();
+	}
+	
+	public void checkLastRoll() {
+		if (ceilingDie.getLastRoll() == 1 || floorDie.getLastRoll() == 1) {
+			this.isSkunk = true;
+		}
 	}
 	
 	public int getLastRoll() {
 		return this.lastRoll;
+	}
+
+	public boolean getIsSkunk() {
+		return isSkunk;
 	}
 	
 }
