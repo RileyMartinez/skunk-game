@@ -38,4 +38,10 @@ public class TestPredictableDie {
 		die.roll();
 	}
 	
+	@Test (expected = RuntimeException.class)
+	public void test_predictable_die_with_value_beyond_upper_bound() {
+		PredictableDie die = new PredictableDie(new int[] {7});
+		die.roll();
+	}
+	
 }
