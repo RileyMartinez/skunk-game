@@ -7,7 +7,12 @@ public class PredictableDie {
 	
 	public PredictableDie(int[] is) {
 		if (is.length == 0) {
-			throw new RuntimeException();
+			throw new RuntimeException("No roll value in array.");
+		}
+		for (int i = 0; i < is.length; i++) {
+			if (is[i] < 1) {
+				throw new RuntimeException("Die can't roll a value less than 1");
+			}
 		}
 		this.theRolls = is;
 		this.nextInt = 0;
