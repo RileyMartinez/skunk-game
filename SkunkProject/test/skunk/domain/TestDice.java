@@ -14,4 +14,9 @@ public class TestDice {
 		}
 		assertTrue(dice.getIsSkunk());
 	}
+	
+	@Test
+	public void test_dice_deuce_roll() {
+		fail("Test not yet implemented.");
+	}
 }
