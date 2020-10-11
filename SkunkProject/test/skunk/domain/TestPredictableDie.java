@@ -7,14 +7,13 @@ import org.junit.Test;
 public class TestPredictableDie {
 
 	@Test
-	public void test_predictable_die_1_2_3() {
-		PredictableDie die = new PredictableDie(new int[] {1, 2, 3});
-		die.roll();
-		assertEquals(1, die.getLastRoll());
-		die.roll();
-		assertEquals(2, die.getLastRoll());
-		die.roll();
-		assertEquals(3, die.getLastRoll());
+	public void test_predictable_die_roll_range() {
+		int[] testRolls = new int[] {1, 2, 3, 4, 5, 6};
+		PredictableDie die = new PredictableDie(testRolls);
+		for (int i = 0; i < testRolls.length; i++) {
+			die.roll();
+			assertEquals(testRolls[i], die.getLastRoll());
+		}
 	}
 	
 	@Test
