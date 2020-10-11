@@ -32,9 +32,15 @@ public class TestPredictableDice {
 		dice.roll();
 	}
 	
-	@Test
-	public void test_predictable_dice_with_invalid_lower_bound() {
-		PredictableDice dice = new PredictableDice(new int[] {0, 1});
+	@Test (expected = RuntimeException.class)
+	public void test_predictable_dice_with_value_beyond_lower_bound() {
+		PredictableDice dice = new PredictableDice(new int[] {1});
+		dice.roll();
+	}
+	
+	@Test (expected = RuntimeException.class)
+	public void test_predictable_dice_with_value_beyond_upper_bound() {
+		PredictableDice dice = new PredictableDice(new int[] {13});
 		dice.roll();
 	}
 	

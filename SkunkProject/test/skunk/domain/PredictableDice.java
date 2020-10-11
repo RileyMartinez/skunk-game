@@ -10,12 +10,15 @@ public class PredictableDice {
 	
 	public PredictableDice(int[] is) {
 		if (is.length == 0) {
-			throw new RuntimeException();
+			throw new RuntimeException("No roll value in array.");
 		}
 		ceilingRoll = new int[is.length];
 		floorRoll = new int[is.length];
 		
 		for (int i = 0; i < is.length; i++) {
+			if (is[i] < 2) {
+				throw new RuntimeException("Dice can't roll a value less than 2.");
+			}
 			ceilingRoll[i] = (int)Math.ceil((double)is[i]/2);
 			floorRoll[i] = (int)Math.floor((double)is[i]/2);
 		}
