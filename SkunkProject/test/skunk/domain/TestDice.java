@@ -12,8 +12,8 @@ public class TestDice {
 		while (!dice.getIsSkunk()) {
 			dice.roll();
 		}
-		assertTrue(dice.getDie1().getLastRoll() == 1 || dice.getDie2().getLastRoll() == 1);
-		assertTrue(dice.getIsSkunk());
+		assertTrue("first value", dice.getDie1().getLastRoll() == 1 || dice.getDie2().getLastRoll() == 1);
+		assertTrue("second value", dice.getIsSkunk());
 	}
 	
 	@Test
@@ -22,8 +22,8 @@ public class TestDice {
 		while (!dice.getIsDeuce()) {
 			dice.roll();
 		}
-		assertEquals(1, dice.getDie1().getLastRoll());
-		assertEquals(1, dice.getDie2().getLastRoll());
-		assertTrue(dice.getIsDeuce());
+		assertEquals("first value", 1, dice.getDie1().getLastRoll());
+		assertEquals("second value", 1, dice.getDie2().getLastRoll());
+		assertTrue("third value", dice.getIsDeuce());
 	}
 }
