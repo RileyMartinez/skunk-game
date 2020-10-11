@@ -19,6 +19,7 @@ public class Dice {
 	private int lastRoll;
 	private Die die1;
 	private Die die2;
+	private Boolean isSkunk;
 
 	// Constructors (object initializers) also can be declared anywhere
 	// Convention: after instance fields/variables
@@ -26,7 +27,7 @@ public class Dice {
 	public Dice() {
 		// initialize instance variables die1 and die2 by
 		// creating a new instance of each
-
+		this.isSkunk = false;
 		this.die1 = new Die();
 		this.die2 = new Die();
 		this.roll();
@@ -44,6 +45,16 @@ public class Dice {
 	public int getLastRoll() {
 		return this.lastRoll;
 	}
+	
+	public void checkLastRoll() {
+		if (die1.getLastRoll() == 1 || die2.getLastRoll() == 1) {
+			this.isSkunk = true;
+		}
+	}
+	
+	public Boolean getIsSkunk() {
+		return isSkunk;
+	}
 
 	public void roll() {
 		// Roll each of die1, die2, sum their last rolls,
@@ -52,7 +63,7 @@ public class Dice {
 		die1.roll();
 		die2.roll();
 		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
-
+		checkLastRoll();
 	}
 
 	// the following method converts the internals of

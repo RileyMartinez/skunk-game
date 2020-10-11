@@ -8,6 +8,10 @@ public class TestDice {
 
 	@Test
 	public void test_dice_skunk_roll() {
-		fail("Not yet implemented.");
+		Dice dice = new Dice();
+		while (!dice.getIsSkunk()) {
+			dice.roll();
+		}
+		assertTrue(dice.getIsSkunk());
 	}
 }
