@@ -9,7 +9,6 @@ public class Die {
 
 	// getter or accessor method
 	public int getLastRoll() { 
-
 		return this.lastRoll;
 	}
 	
