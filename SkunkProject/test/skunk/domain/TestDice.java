@@ -27,7 +27,7 @@ public class TestDice {
 	}
 	
 	@Test
-	public void test_dice_deuce_roll() {
+	public void test_dice_roll_deuce() {
 		Dice dice = new Dice();
 		while (!dice.getIsDeuce()) {
 			dice.roll();
@@ -35,5 +35,10 @@ public class TestDice {
 		assertEquals("first value", 1, dice.getDie1().getLastRoll());
 		assertEquals("second value", 1, dice.getDie2().getLastRoll());
 		assertTrue("third value", dice.getIsDeuce());
+	}
+	
+	@Test
+	public void test_dice_roll_skunk_but_not_deuce() {
+		fail("Test not implemented.");
 	}
 }
