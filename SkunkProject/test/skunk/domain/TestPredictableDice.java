@@ -16,4 +16,9 @@ public class TestPredictableDice {
 		dice.roll();
 		assertEquals(4, dice.getLastRoll());
 	}
+	
+	@Test
+	public void test_predictable_dice_2_more_than_once() {
+		fail();
+	}
 }
