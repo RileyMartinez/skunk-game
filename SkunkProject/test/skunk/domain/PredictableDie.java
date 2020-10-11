@@ -12,6 +12,8 @@ public class PredictableDie {
 		for (int i = 0; i < is.length; i++) {
 			if (is[i] < 1) {
 				throw new RuntimeException("Die can't roll a value less than 1");
+			} else if (is[i] > 6) {
+				throw new RuntimeException("Die can't roll a value greater than 6");
 			}
 		}
 		this.theRolls = is;
