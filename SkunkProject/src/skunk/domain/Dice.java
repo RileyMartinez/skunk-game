@@ -12,8 +12,6 @@ import edu.princeton.cs.introcs.StdOut;
  *
  */
 
-//nburns, adding a comment to test GIT connection
-
 public class Dice {
 	// Instance fields (variables) may be declared anywhere in class body
 	// Convention: put at top
