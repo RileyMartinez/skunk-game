@@ -11,7 +11,10 @@ public class PredictableDice {
 	public PredictableDice(int[] die1Rolls, int[] die2Rolls) {
 		if (die1Rolls.length == 0 || die2Rolls.length == 0) {
 			throw new RuntimeException("No roll values in array.");
+		} else if (die1Rolls.length != die2Rolls.length) {
+			throw new RuntimeException("Both arrays for each die must be the same length.");
 		}
+		
 		for (int i = 0; i < die1Rolls.length; i++) {
 			if (die1Rolls[i] + die2Rolls[i] < 2) {
 				throw new RuntimeException("Dice can't roll a value less than 2.");
@@ -19,6 +22,7 @@ public class PredictableDice {
 				throw new RuntimeException("Dice can't roll a value greater than 12.");
 			}
 		}
+		
 		die1 = new PredictableDie(die1Rolls);
 		die2 = new PredictableDie(die2Rolls);
 	}
@@ -33,6 +37,7 @@ public class PredictableDice {
 	public void checkLastRoll() {
 		if (die1.getLastRoll() == 1 || die2.getLastRoll() == 1) {
 			this.isSkunk = true;
+			
 			if (die1.getLastRoll() == 1 && die2.getLastRoll() == 1) {
 				this.isDeuce = true;
 			} else {

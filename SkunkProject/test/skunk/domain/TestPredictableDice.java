@@ -78,7 +78,8 @@ public class TestPredictableDice {
 	
 	@Test(expected = RuntimeException.class)
 	public void test_predictable_dice_with_unequal_number_of_rolls_between_each_die() {
-		fail("Not yet implemented.");
+		PredictableDice dice = new PredictableDice(new int[] { 2, 6, 5 }, new int[] { 3 });
+		dice.roll();
 	}
 	 
 }
