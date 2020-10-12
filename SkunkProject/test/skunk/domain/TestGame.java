@@ -12,5 +12,14 @@ public class TestGame {
 	public void testGameCreation() {
 		Game myGame = new Game(); 
 	}
+	
+	@Test
+	//test to verify that a game is started
+	public void testGameStart() {
+		Game myGame = new Game();
+		String gameStatus; 
+		gameStatus = myGame.getStatus();
+		assertEquals("Game has not started yet", gameStatus);
+	}
 
 }
