@@ -8,4 +8,9 @@ public class Game {
 		return "Game has not started yet";
 	}
 
+	public void startGame() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

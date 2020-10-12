@@ -14,12 +14,15 @@ public class TestGame {
 	}
 	
 	@Test
-	//test to verify that a game is started
+	//test to verify that a game has an appropriate status (started, not started, completed)
 	public void testGameStart() {
 		Game myGame = new Game();
 		String gameStatus; 
 		gameStatus = myGame.getStatus();
 		assertEquals("Game has not started yet", gameStatus);
+		myGame.startGame();
+		gameStatus = myGame.getStatus();
+		assertEquals("The Game is Afoot!", gameStatus);
 	}
 
 }
