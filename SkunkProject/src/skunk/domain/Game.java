@@ -8,7 +8,7 @@ public class Game {
 	
 	public String getStatus() {
 		if(isStarted == false) { 
-			return "Game has not started yet";
+			return "The Game has not started yet";
 		}
 		else {
 			return "The Game is Afoot!";
