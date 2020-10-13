@@ -15,7 +15,7 @@ public class TestGame {
 	
 	@Test
 	//test to verify that a game has an appropriate status (started, not started, completed)
-	public void testGameStart() {
+	public void testGameStatus() {
 		Game myGame = new Game();
 		String gameStatus; 
 		

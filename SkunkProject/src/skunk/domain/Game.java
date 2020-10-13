@@ -21,4 +21,9 @@ public class Game {
 		
 	}
 
+	public void completeGame() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
