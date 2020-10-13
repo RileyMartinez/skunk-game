@@ -10,7 +10,6 @@ public class TestTurn {
 	//Test to see if a turn can be instantiated
 	public void testGameCreation() {
 		Turn myTurn = new Turn();
-		
 	}
 
 }
