@@ -50,7 +50,10 @@ public class TestPlayer {
 	
 	@Test
 	public void test_adding_points() {
-		fail("Not yet implemented.");
+		Player player = new Player();
+		player.addPoints(10);
+		player.addPoints(11);
+		assertEquals(player.getPoints(), 21);
 	}
 
 }
