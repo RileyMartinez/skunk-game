@@ -4,6 +4,11 @@ public class Player {
 	
 	private int points;
 	private String name;
+	private int chips;
+	
+	public Player() {
+		this.chips = 50;
+	}
 	
 	public void setPoints(int points) {
 		this.points = points;
@@ -23,5 +28,9 @@ public class Player {
 
 	public Object getName() {
 		return this.name;
+	}
+
+	public int getChips() {
+		return chips;
 	}
 }
