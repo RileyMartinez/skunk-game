@@ -55,5 +55,13 @@ public class TestPlayer {
 		player.addPoints(11);
 		assertEquals(player.getPoints(), 21);
 	}
+	
+	@Test
+	public void test_clearing_points() {
+		Player player = new Player();
+		player.addPoints(99);
+		player.clearPoints();
+		assertEquals(player.getPoints(), 0);
+	}
 
 }
