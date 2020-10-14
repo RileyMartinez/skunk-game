@@ -21,7 +21,7 @@ public class TestKitty {
 		kitty.addChips(4);
 		kitty.removeChips(2);
 		kitty.removeChips(1);
-		assertEquals(kitty.getChips(), 1);
+		assertEquals(kitty.getChips(), 5);
 	}
 
 }
