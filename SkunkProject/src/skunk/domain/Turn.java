@@ -22,7 +22,7 @@ public class Turn {
 		this.score = score;
 	}
 
-	public void wipeScore() {
+	public void clearScore() {
 		this.setScore(0);
 	}
 

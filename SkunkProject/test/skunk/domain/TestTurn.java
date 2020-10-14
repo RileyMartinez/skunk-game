@@ -27,7 +27,7 @@ public class TestTurn {
 		Player player = new Player();
 		Turn turn = new Turn(player);
 		turn.increaseScore(4);
-		turn.wipeScore();
+		turn.clearScore();
 		assertEquals(turn.getScore(), 0);
 	}
 	
