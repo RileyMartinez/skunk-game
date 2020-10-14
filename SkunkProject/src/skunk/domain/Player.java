@@ -37,4 +37,8 @@ public class Player {
 	public void addChips(int i) {
 		this.chips += i;
 	}
+
+	public void removeChips(int i) {
+		this.chips -= i;
+	}
 }
