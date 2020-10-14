@@ -11,5 +11,10 @@ public class TestTurn {
 	public void testGameCreation() {
 		Turn myTurn = new Turn();
 	}
+	
+	@Test
+	public void test_begin_turn_with_1_player() {
+		fail("Not yet implemented.");
+	}
 
 }

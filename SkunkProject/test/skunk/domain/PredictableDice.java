@@ -12,7 +12,7 @@ public class PredictableDice {
 		if (die1Rolls.length == 0 || die2Rolls.length == 0) {
 			throw new RuntimeException("No roll values in array.");
 		} else if (die1Rolls.length != die2Rolls.length) {
-			throw new RuntimeException("Both arrays for each die must be the same length.");
+			throw new RuntimeException("Both arrays for each die must have the same number of rolls.");
 		}
 		
 		for (int i = 0; i < die1Rolls.length; i++) {
