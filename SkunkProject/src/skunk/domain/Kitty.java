@@ -16,4 +16,8 @@ public class Kitty {
 		this.chips = chips;
 	}
 
+	public void removeChips(int i) {
+		this.setChips(this.getChips() - i);
+	}
+
 }
