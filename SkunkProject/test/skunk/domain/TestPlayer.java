@@ -27,5 +27,14 @@ public class TestPlayer {
 		player.addChips(4);
 		assertEquals(player.getChips(), 62);
 	}
+	
+	@Test
+	public void test_removing_chips_from_player_chip_total() {
+		// Player starts out with 50 chips
+		Player player = new player();
+		player.removeChips(10);
+		player.removeChips(6);
+		assertEquals(player.getChips(), 34);
+	}
 
 }
