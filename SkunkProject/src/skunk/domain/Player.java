@@ -34,7 +34,7 @@ public class Player {
 		this.name = name;
 	}
 
-	public Object getName() {
+	public String getName() {
 		return this.name;
 	}
 
@@ -48,5 +48,9 @@ public class Player {
 
 	public void removeChips(int i) {
 		this.chips -= i;
+	}
+
+	public void clearPoints() {
+		this.setPoints(0);
 	}
 }
