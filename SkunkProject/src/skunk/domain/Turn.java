@@ -25,7 +25,7 @@ public class Turn {
 		this.setScore(0);
 	}
 
-	public void cashOut() {
+	public void endTurn() {
 		this.player.addPoints(this.getScore());
 	}
 }

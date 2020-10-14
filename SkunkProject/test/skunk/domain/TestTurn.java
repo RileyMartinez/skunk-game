@@ -32,12 +32,12 @@ public class TestTurn {
 	}
 	
 	@Test
-	public void test_player_receives_score_on_cashout() {
+	public void test_end_of_turn() {
 		Player player = new Player();
 		Turn turn = new Turn(player);
 		turn.increaseScore(8);
 		turn.increaseScore(11);
-		turn.cashOut();
+		turn.endTurn();
 		assertEquals(player.getPoints(), 19);
 	}
 }
