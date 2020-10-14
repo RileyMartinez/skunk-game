@@ -27,7 +27,7 @@ public class Player {
 	}
 	
 	public void addPoints(int turnScore) {
-		this.points += turnScore;
+		this.setPoints(this.getPoints() + turnScore);
 	}
 
 	public void setName(String name) {
@@ -43,11 +43,15 @@ public class Player {
 	}
 
 	public void addChips(int i) {
-		this.chips += i;
+		this.setChips(this.getChips() + i);
+	}
+
+	private void setChips(int i) {
+		this.chips = i;
 	}
 
 	public void removeChips(int i) {
-		this.chips -= i;
+		this.setChips(this.getChips() - i);
 	}
 
 	public void clearPoints() {

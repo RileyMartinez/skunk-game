@@ -11,7 +11,7 @@ public class Turn {
 	}
 
 	public void increaseScore(int rollAmount) {
-		this.score += rollAmount;
+		this.setScore(this.getScore() + rollAmount);
 	}
 
 	public int getScore() {
