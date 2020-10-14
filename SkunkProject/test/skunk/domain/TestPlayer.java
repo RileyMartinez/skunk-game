@@ -19,6 +19,11 @@ public class TestPlayer {
 	}
 	
 	@Test
+	public void test_rename_player() {
+		fail("Not yet implemented.");
+	}
+	
+	@Test
 	public void test_starting_chip_total_equals_50() {
 		Player player = new Player();
 		assertEquals(player.getChips(), 50);

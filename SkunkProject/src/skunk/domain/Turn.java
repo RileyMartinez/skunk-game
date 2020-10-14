@@ -7,6 +7,7 @@ public class Turn {
 
 	public Turn(Player p) {
 		this.player = p;
+		this.score = 0;
 	}
 
 	public void increaseScore(int rollAmount) {
