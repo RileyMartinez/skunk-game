@@ -9,8 +9,8 @@ public class Turn {
 		this.player = p;
 	}
 
-	public void increaseScore(int i) {
-		this.setScore(i);
+	public void increaseScore(int rollAmount) {
+		this.score += rollAmount;
 	}
 
 	public int getScore() {
@@ -23,5 +23,9 @@ public class Turn {
 
 	public void wipeScore() {
 		this.setScore(0);
+	}
+
+	public void cashOut() {
+		this.player.addPoints(this.getScore());
 	}
 }

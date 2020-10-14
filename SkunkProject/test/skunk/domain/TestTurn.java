@@ -18,7 +18,8 @@ public class TestTurn {
 		Player player = new Player();
 		Turn turn = new Turn(player);
 		turn.increaseScore(12);
-		assertEquals(turn.getScore(), 12);
+		turn.increaseScore(6);
+		assertEquals(turn.getScore(), 18);
 	}
 	
 	@Test
@@ -28,5 +29,15 @@ public class TestTurn {
 		turn.increaseScore(4);
 		turn.wipeScore();
 		assertEquals(turn.getScore(), 0);
+	}
+	
+	@Test
+	public void test_player_receives_score_on_cashout() {
+		Player player = new Player();
+		Turn turn = new Turn(player);
+		turn.increaseScore(8);
+		turn.increaseScore(11);
+		turn.cashOut();
+		assertEquals(player.getPoints(), 19);
 	}
 }
