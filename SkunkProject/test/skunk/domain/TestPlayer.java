@@ -20,7 +20,10 @@ public class TestPlayer {
 	
 	@Test
 	public void test_rename_player() {
-		fail("Not yet implemented.");
+		Player player = new Player();
+		assertEquals("first value", player.getName(), "anon");
+		player.setName("Nicole");
+		assertEquals("second value", player.getName(), "Nicole");
 	}
 	
 	@Test
