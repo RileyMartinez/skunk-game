@@ -20,4 +20,13 @@ public class TestTurn {
 		turn.increaseScore(12);
 		assertEquals(turn.getScore(), 12);
 	}
+	
+	@Test
+	public void test_wiping_score() {
+		Player player = new Player();
+		Turn turn = new Turn(player);
+		turn.increaseScore(4);
+		turn.wipeScore();
+		assertEquals(turn.getScore(), 0);
+	}
 }
