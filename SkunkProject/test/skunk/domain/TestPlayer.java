@@ -12,5 +12,11 @@ public class TestPlayer {
 		player.setName("Riley");
 		assertEquals(player.getName(), "Riley");
 	}
+	
+	@Test
+	public void test_starting_chip_total_equals_50() {
+		Player player = new Player();
+		assertEquals(player.getChips(), 50);
+	}
 
 }
