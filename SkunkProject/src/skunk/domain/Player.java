@@ -33,4 +33,8 @@ public class Player {
 	public int getChips() {
 		return chips;
 	}
+
+	public void addChips(int i) {
+		this.chips += i;
+	}
 }
