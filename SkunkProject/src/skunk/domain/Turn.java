@@ -20,4 +20,8 @@ public class Turn {
 	public void setScore(int score) {
 		this.score = score;
 	}
+
+	public void wipeScore() {
+		this.setScore(0);
+	}
 }
