@@ -8,9 +8,14 @@ public class TestPlayer {
 
 	@Test
 	public void test_create_a_new_player_with_name() {
-		Player player = new Player();
-		player.setName("Riley");
+		Player player = new Player("Riley");
 		assertEquals(player.getName(), "Riley");
+	}
+	
+	@Test
+	public void test_create_new_anonymous_player() {
+		Player player = new Player();
+		assertEquals(player.getName(), "anon");
 	}
 	
 	@Test
@@ -35,6 +40,12 @@ public class TestPlayer {
 		player.removeChips(10);
 		player.removeChips(6);
 		assertEquals(player.getChips(), 34);
+	}
+	
+	@Test
+	public void test_starting_points_total_equals_0() {
+		Player player = new Player();
+		assertEquals(player.getPoints(), 0);
 	}
 
 }

@@ -6,8 +6,11 @@ public class Player {
 	private String name;
 	private int chips;
 	
-	public Player() {
+	
+	public Player(String name) {
 		this.chips = 50;
+		this.points = 0;
+		this.name = name;
 	}
 	
 	public void setPoints(int points) {
