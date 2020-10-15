@@ -27,7 +27,7 @@ public class Game {
 
 	public void completeGame() {
 		this.isCompleted = true;
-		// TODO Auto-generated method stub
+		
 		
 	}
 
