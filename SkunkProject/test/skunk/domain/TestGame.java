@@ -52,7 +52,7 @@ public class TestGame {
 	public void testAddPlayersToGame() { 
 		Game myGame = new Game(); 
 		myGame.addPlayer("Nicole Burns"); 
-		assertTrue(myGame.getNumberOfPlayers() == 1)); 
+		assertTrue(myGame.getNumberOfPlayers() == 1); 
 	}
 
 	
