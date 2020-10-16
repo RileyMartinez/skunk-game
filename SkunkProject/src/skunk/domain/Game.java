@@ -39,7 +39,7 @@ public class Game {
 
 	public int getNumberOfTurns() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 }
