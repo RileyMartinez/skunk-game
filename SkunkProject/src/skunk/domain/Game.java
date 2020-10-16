@@ -5,7 +5,7 @@ public class Game {
 
 	boolean isStarted = false; 
 	boolean isCompleted = false;
-	int numberOfTurns = 1; 
+	int numberOfTurns =0; 
 	
 
 	
@@ -34,7 +34,7 @@ public class Game {
 	}
 
 	public void startNewTurn() {
-		// TODO Auto-generated method stub
+		numberOfTurns ++; 
 		
 	}
 
