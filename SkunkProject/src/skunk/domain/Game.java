@@ -5,6 +5,7 @@ public class Game {
 
 	boolean isStarted = false; 
 	boolean isCompleted = false;
+	
 
 	
 	public String getStatus() {
@@ -29,6 +30,16 @@ public class Game {
 		this.isCompleted = true;
 		
 		
+	}
+
+	public void startTurn() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int getNumberOfTurns() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
