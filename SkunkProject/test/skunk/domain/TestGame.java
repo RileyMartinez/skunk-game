@@ -47,4 +47,13 @@ public class TestGame {
 		assertEquals(true, myGame.getTurnStatus()); 
 	}
 	
+	@Test
+	//test to see if players can be added to a game
+	public void testAddPlayersToGame() { 
+		Game myGame = new Game(); 
+		myGame.addPlayer("Nicole Burns"); 
+		assertTrue(myGame.getNumberOfPlayers() == 1)); 
+	}
+
+	
 }
