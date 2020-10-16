@@ -35,8 +35,9 @@ public class TestGame {
 	//test to verify that there is at least one turn per game
 	public void testGameOneTurn() {
 		Game myGame = new Game(); 
-		myGame.startTurn(); 
+		myGame.startNewTurn(); 
 		assertTrue(myGame.getNumberOfTurns() == 1); 
 	}
+	
 	
 }
