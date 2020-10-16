@@ -43,4 +43,9 @@ public class Game {
 		return numberOfTurns;
 	}
 
+	public Object getTurnStatus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

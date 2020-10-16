@@ -37,7 +37,16 @@ public class TestGame {
 		Game myGame = new Game(); 
 		myGame.startNewTurn(); 
 		assertTrue(myGame.getNumberOfTurns() == 1); 
+		myGame.startNewTurn(); 
+		assertTrue(myGame.getNumberOfTurns() == 2);
 	}
 	
+	@Test
+	//test to see if a turn is in progress
+	public void testGameTurnStatus() {
+		Game myGame = new Game(); 
+		myGame.startNewTurn(); 
+		assertEquals(true, myGame.getTurnStatus()); 
+	}
 	
 }
