@@ -31,4 +31,11 @@ public class TestGame {
 		assertEquals("The Game has ended", gameStatus);
 	}
 
+	@Test
+	//test to verify that there is at least one turn per game
+	public void testGameOneTurn() {
+		Game myGame = new Game(); 
+		myGame.startTurn(); 
+	}
+	
 }
