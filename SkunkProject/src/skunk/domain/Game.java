@@ -48,4 +48,14 @@ public class Game {
 		return true;
 	}
 
+	public void addPlayer(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int getNumberOfPlayers() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
