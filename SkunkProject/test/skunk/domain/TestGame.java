@@ -36,9 +36,7 @@ public class TestGame {
 	public void testGameOneTurn() {
 		Game myGame = new Game(); 
 		myGame.startNewTurn(); 
-		assertTrue(myGame.getNumberOfTurns() == 1); 
-		myGame.startNewTurn(); 
-		assertTrue(myGame.getNumberOfTurns() == 2);
+		assertTrue(myGame.getNumberOfTurns() == 1); 		
 	}
 	
 	@Test

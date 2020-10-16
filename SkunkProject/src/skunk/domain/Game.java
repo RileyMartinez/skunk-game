@@ -6,7 +6,7 @@ public class Game {
 	boolean isStarted = false; 
 	boolean isCompleted = false;
 	int numberOfTurns =0; 
-	
+	boolean turnInProgress = false; 
 
 	
 	public String getStatus() {
@@ -43,9 +43,9 @@ public class Game {
 		return numberOfTurns;
 	}
 
-	public Object getTurnStatus() {
+	public boolean getTurnStatus() {
 		// TODO Auto-generated method stub
-		return null;
+		return true;
 	}
 
 }
