@@ -52,7 +52,7 @@ public class Game {
 
 	public boolean getTurnStatus() {
 		// TODO Auto-generated method stub
-		return true;
+		return turnInProgress;
 	}
 
 	public void addPlayer(String playerName) {
