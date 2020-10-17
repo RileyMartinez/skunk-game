@@ -40,9 +40,15 @@ public class Game {
 		
 	}
 
+	//Start a new turn IF a game is in progress
 	public void startNewTurn() {
-		turnInProgress = true;
-		numberOfTurns ++; 
+		if(this.isStarted == true) { 
+			turnInProgress = true;
+			numberOfTurns ++; 
+		}
+		else
+			turnInProgress = false; 
+		
 		
 	}
 
