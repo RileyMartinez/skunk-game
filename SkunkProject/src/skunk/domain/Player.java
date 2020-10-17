@@ -57,4 +57,8 @@ public class Player {
 	public void clearPoints() {
 		this.setPoints(0);
 	}
+	
+	public String toString() { 
+		return "(" + this.getName() + ", " + this.getChips() + " chips, " + this.getPoints() + " points)";
+	}
 }

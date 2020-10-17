@@ -1,5 +1,8 @@
 package skunk.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class Game {
 
@@ -7,8 +10,10 @@ public class Game {
 	private boolean isCompleted = false;
 	private int numberOfTurns; 
 	private boolean turnInProgress = false; 
-	private Player[] players = new Player[10]; 
+	private ArrayList<Player> players = new ArrayList(); 
 	private int numberOfPlayers; 
+	
+	Player n = new Player();
 
 	
 	public String getStatus() {
@@ -52,7 +57,7 @@ public class Game {
 
 	public void addPlayer(String playerName) {
 		Player player = new Player(playerName);
-		players[numberOfPlayers] = player;
+		players.add(player);
 		numberOfPlayers++; 
 		
 	}
@@ -64,7 +69,7 @@ public class Game {
 
 	public String printPlayers() {
 		// TODO Auto-generated method stub
-		return null;
+		return players.toString();
 	}
 
 }

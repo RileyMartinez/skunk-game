@@ -62,7 +62,7 @@ public class TestGame {
 	public void testPrintPlayers() { 
 		Game myGame = new Game(); 
 		myGame.addPlayer("Nicole Burns"); 
-		assertEquals("Nicole Burns", myGame.printPlayers()); 
+		assertEquals("[(Nicole Burns, 50 chips, 0 points)]", myGame.printPlayers()); 
 
 	}
 
