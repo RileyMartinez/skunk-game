@@ -41,6 +41,7 @@ public class Game {
 	}
 
 	public void startNewTurn() {
+		turnInProgress = true;
 		numberOfTurns ++; 
 		
 	}
