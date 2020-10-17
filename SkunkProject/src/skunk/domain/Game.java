@@ -62,4 +62,9 @@ public class Game {
 		return numberOfPlayers;
 	}
 
+	public String printPlayers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
