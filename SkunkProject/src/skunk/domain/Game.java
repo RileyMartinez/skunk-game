@@ -5,9 +5,10 @@ public class Game {
 
 	private boolean isStarted = false; 
 	private boolean isCompleted = false;
-	private int numberOfTurns =0; 
+	private int numberOfTurns; 
 	private boolean turnInProgress = false; 
 	private Player[] players; 
+	private int numberOfPlayers; 
 
 	
 	public String getStatus() {
@@ -49,14 +50,15 @@ public class Game {
 		return true;
 	}
 
-	public void addPlayer(String string) {
-		// TODO Auto-generated method stub
+	public void addPlayer(String playerName) {
+		Player player = new Player(playerName);
+		numberOfPlayers++; 
 		
 	}
 
 	public int getNumberOfPlayers() {
 		// TODO Auto-generated method stub
-		return 1;
+		return numberOfPlayers;
 	}
 
 }

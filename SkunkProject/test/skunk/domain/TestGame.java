@@ -53,6 +53,8 @@ public class TestGame {
 		Game myGame = new Game(); 
 		myGame.addPlayer("Nicole Burns"); 
 		assertTrue(myGame.getNumberOfPlayers() == 1); 
+		myGame.addPlayer("Riley Martinez");
+		assertTrue(myGame.getNumberOfPlayers() == 2);
 	}
 
 	
