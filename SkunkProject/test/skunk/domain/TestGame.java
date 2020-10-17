@@ -57,7 +57,8 @@ public class TestGame {
 		assertTrue(myGame.getNumberOfPlayers() == 1); 
 		myGame.startGame();
 		myGame.addPlayer("Riley Martinez");
-		assertTrue(myGame.getNumberOfPlayers() == 2);
+		assertFalse(myGame.getNumberOfPlayers() == 2);
+		
 	}
 	
 	@Test
