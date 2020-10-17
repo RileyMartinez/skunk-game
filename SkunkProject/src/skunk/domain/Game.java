@@ -63,9 +63,12 @@ public class Game {
 	}
 
 	public void addPlayer(String playerName) {
-		Player player = new Player(playerName);
-		players.add(player);
-		numberOfPlayers++; 
+		if(this.isStarted == false) {
+			Player player = new Player(playerName);
+			players.add(player);
+			numberOfPlayers++; 
+		}
+		
 		
 	}
 
