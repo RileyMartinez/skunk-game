@@ -34,7 +34,8 @@ public class TestGame {
 	@Test
 	//test to verify that there is at least one turn per game
 	public void testGameOneTurn() {
-		Game myGame = new Game(); 
+		Game myGame = new Game();
+		myGame.startGame();
 		myGame.startNewTurn(); 
 		assertTrue(myGame.getNumberOfTurns() == 1); 		
 	}
@@ -43,6 +44,7 @@ public class TestGame {
 	//test to see if a turn is in progress
 	public void testGameTurnStatus() {
 		Game myGame = new Game(); 
+		myGame.startGame();
 		myGame.startNewTurn(); 
 		assertEquals(true, myGame.getTurnStatus()); 
 	}
