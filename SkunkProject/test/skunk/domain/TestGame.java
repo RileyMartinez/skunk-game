@@ -56,6 +56,15 @@ public class TestGame {
 		myGame.addPlayer("Riley Martinez");
 		assertTrue(myGame.getNumberOfPlayers() == 2);
 	}
+	
+	@Test
+	//test to see who is playing a given game
+	public void testPrintPlayers() { 
+		Game myGame = new Game(); 
+		myGame.addPlayer("Nicole Burns"); 
+		assertEquals("Nicole Burns", myGame.printPlayers()); 
+
+	}
 
 	
 }

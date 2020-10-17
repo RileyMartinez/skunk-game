@@ -7,7 +7,7 @@ public class Game {
 	private boolean isCompleted = false;
 	private int numberOfTurns; 
 	private boolean turnInProgress = false; 
-	private Player[] players; 
+	private Player[] players = new Player[10]; 
 	private int numberOfPlayers; 
 
 	
@@ -52,6 +52,7 @@ public class Game {
 
 	public void addPlayer(String playerName) {
 		Player player = new Player(playerName);
+		players[numberOfPlayers] = player;
 		numberOfPlayers++; 
 		
 	}
