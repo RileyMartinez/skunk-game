@@ -3,10 +3,11 @@ package skunk.domain;
 
 public class Game {
 
-	boolean isStarted = false; 
-	boolean isCompleted = false;
-	int numberOfTurns =0; 
-	boolean turnInProgress = false; 
+	private boolean isStarted = false; 
+	private boolean isCompleted = false;
+	private int numberOfTurns =0; 
+	private boolean turnInProgress = false; 
+	private Player[] players; 
 
 	
 	public String getStatus() {
@@ -55,7 +56,7 @@ public class Game {
 
 	public int getNumberOfPlayers() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 }
