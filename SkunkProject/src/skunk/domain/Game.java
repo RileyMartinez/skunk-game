@@ -11,7 +11,7 @@ public class Game {
 	private int numberOfTurns; 
 	private boolean turnInProgress = false; 
 	private ArrayList<Player> players = new ArrayList(); 
-	private int numberOfPlayers; 
+	
 	
 	Player n = new Player();
 
@@ -66,7 +66,6 @@ public class Game {
 		if(this.isStarted == false) {
 			Player player = new Player(playerName);
 			players.add(player);
-			numberOfPlayers++; 
 		}
 		
 		
@@ -74,6 +73,7 @@ public class Game {
 
 	public int getNumberOfPlayers() {
 		// TODO Auto-generated method stub
+		int numberOfPlayers = players.size(); 
 		return numberOfPlayers;
 	}
 
@@ -84,6 +84,7 @@ public class Game {
 
 	public void clearAllPlayers() {
 		// TODO Auto-generated method stub
+		players.clear();
 		
 	}
 
