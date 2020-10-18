@@ -71,6 +71,7 @@ public class Game {
 		
 	}
 
+	//returns the number of players in the array list
 	public int getNumberOfPlayers() {
 		// TODO Auto-generated method stub
 		int numberOfPlayers = players.size(); 
