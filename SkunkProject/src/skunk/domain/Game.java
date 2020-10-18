@@ -82,4 +82,9 @@ public class Game {
 		return players.toString();
 	}
 
+	public void clearAllPlayers() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -62,6 +62,18 @@ public class TestGame {
 	}
 	
 	@Test
+	//test to remove players from a game
+	public void testRemovePlayersFromGame() { 
+		Game myGame = new Game(); 
+		myGame.addPlayer("Nicole Burns"); 
+		assertTrue(myGame.getNumberOfPlayers() == 1); 
+		myGame.startGame();
+		myGame.clearAllPlayers();
+		assertTrue(myGame.getNumberOfPlayers() == 0);
+		
+	}
+	
+	@Test
 	//test to see who is playing a given game
 	public void testPrintPlayers() { 
 		Game myGame = new Game(); 
@@ -71,6 +83,8 @@ public class TestGame {
 		assertEquals("[(Nicole Burns, 50 chips, 0 points), (Riley Martinez, 50 chips, 0 points)]", myGame.printPlayers()); 
 
 	}
+	
+	
 
 	
 }
