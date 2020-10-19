@@ -79,6 +79,24 @@ public class Roll {
 		int[] rollValues = { getLastDiceRollDie1(), getLastDiceRollDie2() };
 		rollHistory.add(rollValues);
 	}
+	
+	public int getDiceRollFromRecord(int rollNumber) {
+		int[] rollArray = rollHistory.get(rollNumber -1);
+		int diceValue = rollArray[0] + rollArray[1];
+		return diceValue;
+	}
+	
+	public int getDie1RollFromRecord(int rollNumber) {
+		int[] rollArray = rollHistory.get(rollNumber - 1);
+		int die1Value = rollArray[0];
+		return die1Value;
+	}
+	
+	public int getDie2RollFromRecord(int rollNumber) {
+		int[] rollArray = rollHistory.get(rollNumber - 1);
+		int die2Value = rollArray[1];
+		return die2Value;
+	}
 
 	public boolean isSkunk() {
 		return isSkunk;
