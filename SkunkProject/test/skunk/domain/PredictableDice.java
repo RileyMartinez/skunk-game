@@ -31,22 +31,6 @@ public class PredictableDice {
 		die1.roll();
 		die2.roll();
 		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
-		checkLastRoll();
-	}
-	
-	public void checkLastRoll() {
-		if (die1.getLastRoll() == 1 || die2.getLastRoll() == 1) {
-			this.isSkunk = true;
-			
-			if (die1.getLastRoll() == 1 && die2.getLastRoll() == 1) {
-				this.isDeuce = true;
-			} else {
-				this.isDeuce = false;
-			}
-		} else {
-			this.isSkunk = false;
-			this.isDeuce = false;
-		}
 	}
 	
 	public int getLastRoll() {
@@ -59,6 +43,14 @@ public class PredictableDice {
 
 	public boolean getIsDeuce() {
 		return isDeuce;
+	}
+
+	public int getLastRollDie1() {
+		return die1.getLastRoll();
+	}
+
+	public int getLastRollDie2() {
+		return die2.getLastRoll();
 	}
 	
 }

@@ -61,20 +61,6 @@ public class TestPredictableDice {
 		PredictableDice dice = new PredictableDice(new int[] { 6 }, new int[] { 7 });
 		dice.roll();
 	}
-
-	@Test
-	public void test_predictable_dice_roll_skunk() {
-		PredictableDice dice = new PredictableDice(new int[] { 1 }, new int[] { 5 });
-		dice.roll();
-		assertTrue(dice.getIsSkunk());
-	}
-
-	@Test
-	public void test_predictable_dice_roll_deuce() {
-		PredictableDice dice = new PredictableDice(new int[] { 1 }, new int[] { 1 });
-		dice.roll();
-		assertTrue(dice.getIsDeuce());
-	}
 	
 	@Test(expected = RuntimeException.class)
 	public void test_predictable_dice_with_unequal_number_of_rolls_between_each_die() {

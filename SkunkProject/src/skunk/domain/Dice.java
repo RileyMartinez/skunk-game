@@ -1,7 +1,5 @@
 package skunk.domain;
 
-import edu.princeton.cs.introcs.StdOut;
-
 /**
  * Dice represents a single pair of rollable Die objects, randomly generating
  * sums of their two values
@@ -19,8 +17,6 @@ public class Dice {
 	private int lastRoll;
 	private Die die1;
 	private Die die2;
-	private Boolean isSkunk;
-	private boolean isDeuce;
 
 	// Constructors (object initializers) also can be declared anywhere
 	// Convention: after instance fields/variables
@@ -34,7 +30,6 @@ public class Dice {
 	}
 
 	public Dice(Die die1, Die die2) { // overloaded constructor
-
 		this.die1 = die1;
 		this.die2 = die2;
 	}
@@ -46,26 +41,16 @@ public class Dice {
 		return this.lastRoll;
 	}
 	
+	public int getLastRollDie1() {
+		return this.die1.getLastRoll();
+	}
+
+	public int getLastRollDie2() {
+		return this.die2.getLastRoll();
+	}
+	
 	public void checkLastRoll() {
-		if (die1.getLastRoll() == 1 || die2.getLastRoll() == 1) {
-			this.isSkunk = true;
-			if (die1.getLastRoll() == 1 && die2.getLastRoll() == 1) {
-				this.isDeuce = true;
-			} else {
-				this.isDeuce = false;
-			}
-		} else {
-			this.isSkunk = false;
-			this.isDeuce = false;
-		}
-	}
-	
-	public Boolean getIsSkunk() {
-		return isSkunk;
-	}
-	
-	public boolean getIsDeuce() {
-		return isDeuce;
+		
 	}
 	
 	public Die getDie1() {
@@ -79,11 +64,9 @@ public class Dice {
 	public void roll() {
 		// Roll each of die1, die2, sum their last rolls,
 		// then set Dice.lastRoll to this value
-
 		die1.roll();
 		die2.roll();
 		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
-		checkLastRoll();
 	}
 
 	// the following method converts the internals of
