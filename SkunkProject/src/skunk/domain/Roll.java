@@ -1,5 +1,7 @@
 package skunk.domain;
 
+import java.util.ArrayList;
+
 public class Roll {
 	
 	private static final int SKUNK_VALUE = 1;
@@ -9,14 +11,17 @@ public class Roll {
 	private boolean isSkunk;
 	private boolean isDeuce;
 	private boolean isDouble;
+	private ArrayList<int[]> rollHistory;
 	
 	public Roll () {
 		setDice(new Dice());
+		setRollHistory(new ArrayList<int[]>());
 	}
 	
-	public void rollDiceAndCheck() {
+	public void rollDiceCheckAndRecord() {
 		dice.roll();
 		checkLastDiceRoll();
+		recordLastRoll();
 	}
 	
 	public int getLastDiceRoll() {
@@ -61,6 +66,19 @@ public class Roll {
 			setDouble(false);
 		}
 	}
+	
+	public ArrayList<int[]> getRollHistory() {
+		return rollHistory;
+	}
+	
+	public void setRollHistory(ArrayList<int[]> rollHistory) {
+		this.rollHistory = rollHistory;
+	}
+	
+	public void recordLastRoll() {
+		int[] rollValues = { getLastDiceRollDie1(), getLastDiceRollDie2() };
+		rollHistory.add(rollValues);
+	}
 
 	public boolean isSkunk() {
 		return isSkunk;
@@ -69,6 +87,7 @@ public class Roll {
 	public void setSkunk(boolean isSkunk) {
 		this.isSkunk = isSkunk;
 	}
+
 
 	public boolean isDeuce() {
 		return isDeuce;
@@ -84,6 +103,21 @@ public class Roll {
 
 	public void setDouble(boolean isDouble) {
 		this.isDouble = isDouble;
+	}
+	
+	public String toString() {
+		String s = "";
+		
+		if (isSkunk) {
+			s = "Oof, you rolled a skunk!\n";
+		} else if (isDeuce) {
+			s = "Big oof, you rolled a deuce!\n";
+		} else if (isDouble) {
+			s = "Really big oof, you rolled a double skunk!\n";
+		}
+		return s += "Roll #" + getRollHistory().size() + ":\n"
+				+ "Roll Total: " + getLastDiceRoll() + " => " 
+				+ getLastDiceRollDie1() + " + " + getLastDiceRollDie2(); 
 	}
 	
 }
