@@ -1,8 +1,6 @@
-package skunk.ui;
+package skunk.domain;
 
 import java.util.ArrayList;
-
-import skunk.domain.*;
 
 public class SkunkController {
 	

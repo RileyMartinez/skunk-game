@@ -1,6 +1,7 @@
 package skunk.ui;
 
 import edu.princeton.cs.introcs.*;
+import skunk.domain.SkunkController;
 
 public class SkunkApp {
 	
