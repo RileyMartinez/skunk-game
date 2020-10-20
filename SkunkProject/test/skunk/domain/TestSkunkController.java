@@ -7,8 +7,10 @@ import org.junit.Test;
 public class TestSkunkController {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void test_give_player_chips() {
+		SkunkController controller = new SkunkController();
+		controller.givePlayerChips(21);
+		assertEquals(21, controller.getPlayerChips());
 	}
 
 }
