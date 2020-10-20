@@ -10,7 +10,7 @@ public class TestSkunkController {
 	public void test_give_player_chips() {
 		SkunkController controller = new SkunkController();
 		controller.givePlayerChips(21);
-		assertEquals(21, controller.getPlayerChips());
+		assertEquals(71, controller.getPlayerChips());
 	}
 
 }

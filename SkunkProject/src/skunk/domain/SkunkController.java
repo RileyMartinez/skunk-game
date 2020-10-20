@@ -106,6 +106,11 @@ public class SkunkController {
 	public int getTurnScore() {
 		return turn.getScore();
 	}
+
+
+	public int getPlayerChips() {
+		return player.getChips();
+	}
 	
 	
 	
