@@ -37,10 +37,6 @@ public class SkunkController {
 		player.addPoints(turnScore);
 	}
 	
-	public void addToKitty(int amount) {
-		
-	}
-
 	public void rollAndUpdateScores() {
 		roll.rollDiceCheckAndRecord();
 		if (roll.isSkunk()) {
@@ -93,7 +89,7 @@ public class SkunkController {
 		return roll.isDouble();
 	}
 	
-	public String getRoll() {
+	public String getRollToString() {
 		return roll.toString();
 	}
 
@@ -110,6 +106,11 @@ public class SkunkController {
 
 	public int getPlayerChips() {
 		return player.getChips();
+	}
+
+
+	public int getKittyChips() {
+		return kitty.getChips();
 	}
 	
 	

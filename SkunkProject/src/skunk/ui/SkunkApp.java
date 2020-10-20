@@ -33,7 +33,7 @@ public class SkunkApp {
 			switch (userInput) {
 				case "r":
 					controller.rollAndUpdateScores();
-					StdOut.println("\n" + controller.getPlayerName() + ", " + controller.getRoll());
+					StdOut.println("\n" + controller.getPlayerName() + ", " + controller.getRollToString());
 					promptEnterKey();
 					StdOut.println("Current Player Score: " + controller.getPlayerScore());
 					StdOut.println("Current Turn Score: " + controller.getTurnScore());
