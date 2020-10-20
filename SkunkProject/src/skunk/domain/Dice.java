@@ -24,14 +24,9 @@ public class Dice {
 	public Dice() {
 		// initialize instance variables die1 and die2 by
 		// creating a new instance of each
-		this.die1 = new Die();
-		this.die2 = new Die();
-		this.roll();
-	}
-
-	public Dice(Die die1, Die die2) { // overloaded constructor
-		this.die1 = die1;
-		this.die2 = die2;
+		die1 = new Die();
+		die2 = new Die();
+		roll();
 	}
 
 	// Instance methods can also be declared anywhere in body of class
@@ -42,15 +37,11 @@ public class Dice {
 	}
 	
 	public int getLastRollDie1() {
-		return this.die1.getLastRoll();
+		return getDie1().getLastRoll();
 	}
 
 	public int getLastRollDie2() {
-		return this.die2.getLastRoll();
-	}
-	
-	public void checkLastRoll() {
-		
+		return getDie2().getLastRoll();
 	}
 	
 	public Die getDie1() {
@@ -66,7 +57,7 @@ public class Dice {
 		// then set Dice.lastRoll to this value
 		die1.roll();
 		die2.roll();
-		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
+		lastRoll = die1.getLastRoll() + die2.getLastRoll();
 	}
 
 	// the following method converts the internals of
