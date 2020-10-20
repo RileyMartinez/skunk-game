@@ -7,7 +7,6 @@ public class Roll {
 	private static final int SKUNK_VALUE = 1;
 	private static final int SKUNK_DEUCE_SUM = 3;
 	private Dice dice;
-	private PredictableDice testDice;
 	private boolean isSkunk;
 	private boolean isDeuce;
 	private boolean isDouble;
@@ -45,21 +44,19 @@ public class Roll {
 		this.dice = dice;
 	}
 	
-	public PredictableDice getTestDice() {
-		return testDice;
-	}
-
-	public void setTestDice(PredictableDice testDice) {
-		this.testDice = testDice;
-	}
-	
 	public void checkLastDiceRoll() {
 		if (getLastDiceRollDie1() == SKUNK_VALUE && getLastDiceRollDie2() == SKUNK_VALUE) {
 			setDouble(true);
+			setSkunk(false);
+			setDeuce(false);
 		} else if (getLastDiceRollDie1() + getLastDiceRollDie2() == SKUNK_DEUCE_SUM) {
 			setDeuce(true);
+			setSkunk(false);
+			setDouble(false);
 		} else if (getLastDiceRollDie1() == SKUNK_VALUE || getLastDiceRollDie2() == SKUNK_VALUE) {
 			setSkunk(true);
+			setDeuce(false);
+			setDouble(false);
 		} else {
 			setSkunk(false);
 			setDeuce(false);

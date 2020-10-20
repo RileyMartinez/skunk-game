@@ -20,6 +20,6 @@ public class TestDice {
 		Dice dice = new Dice();
 		String expectedToString = "Dice with last roll: " + dice.getLastRoll() + 
 				" => " + dice.getLastRollDie1() + " + " + dice.getLastRollDie2();
-		assertEquals(dice.toString(), expectedToString);
+		assertEquals(expectedToString, dice.toString());
 	}
 }
