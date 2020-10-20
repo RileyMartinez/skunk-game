@@ -78,9 +78,9 @@ public class TestGame {
 	public void testPrintPlayers() { 
 		Game myGame = new Game(); 
 		myGame.addPlayer("Nicole Burns"); 
-		assertEquals("[(Nicole Burns, 50 chips, 0 points)]", myGame.printPlayers()); 
+		assertEquals("[Player: Nicole Burns\nCurrent Score: 0\nTotal Chips: 50]", myGame.printPlayers());
 		myGame.addPlayer("Riley Martinez"); 
-		assertEquals("[(Nicole Burns, 50 chips, 0 points), (Riley Martinez, 50 chips, 0 points)]", myGame.printPlayers()); 
+		assertEquals("[Player: Nicole Burns\nCurrent Score: 0\nTotal Chips: 50, Player: Riley Martinez\nCurrent Score: 0\nTotal Chips: 50]", myGame.printPlayers()); 
 
 	}
 	
