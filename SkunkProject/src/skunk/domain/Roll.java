@@ -127,13 +127,13 @@ public class Roll {
 		String s = "";
 		
 		if (isSkunk) {
-			s = "Oof, you rolled a skunk!\n";
+			s = "oof, you rolled a skunk! You lose 1 chip to the Kitty.\n";
 		} else if (isDeuce) {
-			s = "Big oof, you rolled a deuce!\n";
+			s = "big oof, you rolled a deuce! You lose 2 chips to the Kitty.\n";
 		} else if (isDouble) {
-			s = "Really big oof, you rolled a double skunk!\n";
+			s = "really big oof, you rolled a double skunk! You lose 4 chips to the Kitty.\n";
 		}
-		return s += "Roll #" + getRollHistory().size() + ":\n"
+		return s += "Roll #" + getRollHistory().size() + "\n"
 				+ "Roll Total: " + getLastDiceRoll() + " => " 
 				+ getLastDiceRollDie1() + " + " + getLastDiceRollDie2(); 
 	}

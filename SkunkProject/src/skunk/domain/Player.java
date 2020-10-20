@@ -59,6 +59,8 @@ public class Player {
 	}
 	
 	public String toString() { 
-		return "(" + this.getName() + ", " + this.getChips() + " chips, " + this.getPoints() + " points)";
+		return "Player: " + this.getName() + 
+				"\nCurrent Score: " + this.getPoints() + 
+				"\nTotal Chips: " + this.getChips(); 
 	}
 }

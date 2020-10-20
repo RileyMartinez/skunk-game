@@ -1,5 +1,7 @@
 package skunk.ui;
 
+import java.util.ArrayList;
+
 import skunk.domain.*;
 
 public class SkunkController {
@@ -41,11 +43,58 @@ public class SkunkController {
 		
 	}
 
-	public void roll() {
+	public void rollAndUpdateScores() {
 		roll.rollDiceCheckAndRecord();
+		if (roll.isSkunk()) {
+			turn.clearScore();
+			player.removeChips(1);
+			kitty.addChips(1);
+		} else if (roll.isDeuce()) {
+			turn.clearScore();
+			player.removeChips(2);
+			kitty.addChips(2);
+		} else if (roll.isDouble()) {
+			turn.clearScore();
+			player.clearPoints();
+			player.removeChips(4);
+			kitty.addChips(4);
+		} else {
+			turn.increaseScore(roll.getLastDiceRoll());
+		}
+	}
+	
+	public String getRollsForTurn() {
+		String s = "";
+		ArrayList<int[]> rollHistory = roll.getRollHistory();
+		for (int i = 0; i < rollHistory.size(); i++) {
+			int[] tempArray = rollHistory.get(i);
+			s += "Roll #" + (i + 1) 
+					+ " => " + Integer.toString(tempArray[0]) 
+					+ " + " + Integer.toString(tempArray[1]) + "\n";
+		}
+		return s;
+	}
+	
+	public Player getPlayer() {
+		return player;
+	}
+	
+	public void endTurn() {
+		turn.endTurn();
 	}
 
-
+	public Boolean rollIsSkunk() {
+		return roll.isSkunk();
+	}
+	
+	public Boolean rollIsDeuce() {
+		return roll.isDeuce();
+	}
+	
+	public Boolean rollIsDouble() {
+		return roll.isDouble();
+	}
+	
 	public String getRoll() {
 		return roll.toString();
 	}
