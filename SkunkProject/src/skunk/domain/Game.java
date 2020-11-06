@@ -88,9 +88,13 @@ public class Game {
 	}
 
 	//method to return whose turn it currently is
-	public Player whoseTurn() {
-		// TODO Auto-generated method stub
-		return null;
+	public int whoseTurn() {
+		int index = (numberOfTurns); 
+		
+		//Player currentPlayer = players.get(index);
+		//return currentPlayer;
+		//System.out.println(index);
+		return index;
 	}
 
 }

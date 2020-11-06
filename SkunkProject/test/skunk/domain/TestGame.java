@@ -87,13 +87,17 @@ public class TestGame {
 	@Test
 	//test to see who is playing a given game
 	public void testWhoseTurnIsIt() { 
-		fail(); 
 		Game myGame = new Game(); 
 		myGame.addPlayer("Nicole Burns");
 		myGame.addPlayer("Riley Martinez");
+		myGame.startGame();
 		myGame.startNewTurn();
-		Player contestant = myGame.whoseTurn(); 
-		assertEquals("Nicole Burns",contestant.getName());
+		//int test2 = 0; 
+		//Player contestant = myGame.whoseTurn(); 
+		int test = myGame.whoseTurn();
+		assertTrue(test == 1);
+		//System.out.println(""+test);
+		//assertEquals("Nicole Burns",contestant.getName());
 	}
 
 	
