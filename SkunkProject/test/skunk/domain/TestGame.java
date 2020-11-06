@@ -90,14 +90,24 @@ public class TestGame {
 		Game myGame = new Game(); 
 		myGame.addPlayer("Nicole Burns");
 		myGame.addPlayer("Riley Martinez");
+		myGame.addPlayer("Some Random");
 		myGame.startGame();
 		myGame.startNewTurn();
-		//int test2 = 0; 
-		//Player contestant = myGame.whoseTurn(); 
-		int test = myGame.whoseTurn();
-		assertTrue(test == 1);
-		//System.out.println(""+test);
-		//assertEquals("Nicole Burns",contestant.getName());
+		Player contestant = myGame.whoseTurn(); 
+		
+		assertEquals("Nicole Burns",contestant.getName());
+		
+		myGame.startNewTurn();
+		contestant = myGame.whoseTurn();
+		assertEquals("Riley Martinez",contestant.getName());
+		
+		myGame.startNewTurn();
+		contestant = myGame.whoseTurn();
+		assertEquals("Some Random",contestant.getName());
+		
+		myGame.startNewTurn();
+		contestant = myGame.whoseTurn();
+		assertEquals("Nicole Burns",contestant.getName());
 	}
 
 	

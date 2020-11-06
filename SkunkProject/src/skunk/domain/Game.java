@@ -88,13 +88,12 @@ public class Game {
 	}
 
 	//method to return whose turn it currently is
-	public int whoseTurn() {
-		int index = (numberOfTurns); 
+	public Player whoseTurn() {
+		int index = (numberOfTurns-1)%(players.size()); 
 		
-		//Player currentPlayer = players.get(index);
-		//return currentPlayer;
-		//System.out.println(index);
-		return index;
+		Player currentPlayer = players.get(index);
+		return currentPlayer;
+		
 	}
 
 }
