@@ -12,8 +12,6 @@ public class Game {
 	private boolean turnInProgress = false; 
 	private ArrayList<Player> players = new ArrayList(); 
 	
-	
-	Player n = new Player();
 
 	
 	public String getStatus() {
