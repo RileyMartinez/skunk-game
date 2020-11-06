@@ -84,7 +84,11 @@ public class TestGame {
 
 	}
 	
-	
+	@Test
+	//test to see who is playing a given game
+	public void testWhosTurnIsIt() { 
+		fail(); 
+	}
 
 	
 }
