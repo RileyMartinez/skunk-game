@@ -87,4 +87,10 @@ public class Game {
 		
 	}
 
+	//method to return whose turn it currently is
+	public Player whoseTurn() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

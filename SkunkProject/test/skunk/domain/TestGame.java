@@ -86,8 +86,14 @@ public class TestGame {
 	
 	@Test
 	//test to see who is playing a given game
-	public void testWhosTurnIsIt() { 
+	public void testWhoseTurnIsIt() { 
 		fail(); 
+		Game myGame = new Game(); 
+		myGame.addPlayer("Nicole Burns");
+		myGame.addPlayer("Riley Martinez");
+		myGame.startNewTurn();
+		Player contestant = myGame.whoseTurn(); 
+		assertEquals("Nicole Burns",contestant.getName());
 	}
 
 	
