@@ -11,7 +11,7 @@ public class Game {
 	private int numberOfTurns; 
 	private boolean turnInProgress = false; 
 	private ArrayList<Player> players = new ArrayList(); 
-	
+	private ArrayList<Turn> turns = new ArrayList();
 
 	
 	public String getStatus() {
@@ -41,8 +41,9 @@ public class Game {
 	//Start a new turn IF a game is in progress
 	public void startNewTurn() {
 		if(this.isStarted == true) { 
-			turnInProgress = true;
-			numberOfTurns ++; 
+			turnInProgress = true; 
+			Turn myTurn = new Turn(this.whoseTurn());
+			turns.add(myTurn); 
 		}
 		else
 			turnInProgress = false; 
@@ -52,7 +53,7 @@ public class Game {
 
 	public int getNumberOfTurns() {
 		// TODO Auto-generated method stub
-		return numberOfTurns;
+		return turns.size();
 	}
 
 	public boolean getTurnStatus() {
@@ -89,8 +90,7 @@ public class Game {
 
 	//method to return whose turn it currently is
 	public Player whoseTurn() {
-		int index = (numberOfTurns-1)%(players.size()); 
-		
+		int index = (turns.size()+1)%(players.size()); 
 		Player currentPlayer = players.get(index);
 		return currentPlayer;
 		
