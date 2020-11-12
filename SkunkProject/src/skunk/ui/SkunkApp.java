@@ -12,18 +12,27 @@ public class SkunkApp {
 		Boolean isRunning = true;
 		controller = new SkunkController();
 		String playerName;
+		int playerCount;
 		String userInput;
 		
 		StdOut.println("Welcome to SkunkApp Demo v1.2. This demo is single player, "
 				+ "and we will only play for one turn. Let's go!\n");
-		StdOut.println("Enter player name: ");
-		playerName = StdIn.readLine();
+		StdOut.println("Enter number of players: ");
+		playerCount = Integer.parseInt(StdIn.readLine());
 		
-		controller.setPlayerName(playerName);
-		StdOut.println("\n" + controller.getPlayerName() + "'s turn has started.\n");
+		for (int i = 1; i <= playerCount; i++) {
+			StdOut.println("Enter player name: ");
+			playerName = StdIn.readLine();
+			controller.addPlayer(playerName);
+		}
+		
+		controller.startGame();
+		controller.startNewTurn();
+		
+		StdOut.println("\n" + controller.getCurrentPlayerName() + "'s turn has started.\n");
 		
 		while (isRunning) {
-			StdOut.println(controller.getPlayerName() + ", select from the following options: \n");
+			StdOut.println(controller.getCurrentPlayerName() + ", select from the following options: \n");
 			StdOut.println("[r] Roll\n"
 					+ "[e] End Turn\n"
 					+ "[q] Quit Game");
@@ -33,13 +42,13 @@ public class SkunkApp {
 			switch (userInput) {
 				case "r":
 					controller.rollAndUpdateScores();
-					StdOut.println("\n" + controller.getPlayerName() + ", " + controller.getRollToString());
+					StdOut.println("\n" + controller.getCurrentPlayerName() + ", " + controller.getCurrentRollToString());
 					promptEnterKey();
-					StdOut.println("Current Player Score: " + controller.getPlayerScore());
-					StdOut.println("Current Turn Score: " + controller.getTurnScore());
+					StdOut.println("Current Player Score: " + controller.getCurrentPlayerScore());
+					StdOut.println("Current Turn Score: " + controller.getCurrentTurnScore());
 					promptEnterKey();
-					if (controller.rollIsSkunk() || controller.rollIsDeuce() || controller.rollIsDouble()) {
-						StdOut.println("End Of Turn Summary: \n\n" + controller.getPlayer() +
+					if (controller.currentRollIsSkunk() || controller.currentRollIsDeuce() || controller.currentRollIsDouble()) {
+						StdOut.println("End Of Turn Summary: \n\n" + controller.getCurrentPlayer() +
 								"\n\nRolls for the Turn: \n" + controller.getRollsForTurn());
 						controller.endTurn();
 						isRunning = false;
@@ -47,7 +56,7 @@ public class SkunkApp {
 					break;
 				case "e":
 					controller.endTurn();
-					StdOut.println("End Of Turn Summary: \n\n" + controller.getPlayer() + 
+					StdOut.println("End Of Turn Summary: \n\n" + controller.getCurrentPlayer() + 
 							"\n\nRolls for the Turn: \n" + controller.getRollsForTurn());
 					isRunning = false;
 					break;

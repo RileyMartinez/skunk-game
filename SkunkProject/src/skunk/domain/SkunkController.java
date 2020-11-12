@@ -1,120 +1,81 @@
 package skunk.domain;
 
-import java.util.ArrayList;
-
 public class SkunkController {
 	
-	private Kitty kitty;
-	private Player player;
-	private Turn turn;
-	private Roll roll;
+	private Game game;
 	
 	public SkunkController() {
-		this.kitty = new Kitty();
-		this.player = new Player();
-		this.roll = new Roll();
-		this.turn = new Turn(player);
+		this.game = new Game();
+	}
+	
+	public void startGame() {
+		game.startGame();
+	}
+	
+	public void startNewTurn() {
+		game.startNewTurn();
+	}
+	
+	public void addPlayer(String playerName) {
+		game.addPlayer(playerName);
 	}
 
-	
 	public void setPlayerName(String name) {
-		player.setName(name);
+		game.setPlayerName(getCurrentPlayer(), name);
 	}
 	
-	public String getPlayerName() {
-		return player.getName();
+	public Player getCurrentPlayer() {
+		return game.getCurrentPlayer();
 	}
 	
-	public void givePlayerChips(int amount) {
-		player.addChips(amount);
+	public String getCurrentPlayerName() {
+		return game.getCurrentPlayerName();
 	}
 	
-	public void takePlayerChips(int amount) {
-		player.removeChips(amount);
-	}
-	
-	public void givePlayerPoints(int turnScore) {
-		player.addPoints(turnScore);
+	public String getPlayerName(int index) {
+		return game.getPlayerName(game.getPlayer(index));
 	}
 	
 	public void rollAndUpdateScores() {
-		roll.rollDiceCheckAndRecord();
-		if (roll.isSkunk()) {
-			turn.clearScore();
-			player.removeChips(1);
-			kitty.addChips(1);
-		} else if (roll.isDeuce()) {
-			turn.clearScore();
-			player.removeChips(2);
-			kitty.addChips(2);
-		} else if (roll.isDouble()) {
-			turn.clearScore();
-			player.clearPoints();
-			player.removeChips(4);
-			kitty.addChips(4);
-		} else {
-			turn.increaseScore(roll.getLastDiceRoll());
-		}
+		game.rollAndUpdateScores();
 	}
 	
 	public String getRollsForTurn() {
-		String s = "";
-		ArrayList<int[]> rollHistory = roll.getRollHistory();
-		for (int i = 0; i < rollHistory.size(); i++) {
-			int[] tempArray = rollHistory.get(i);
-			s += "Roll #" + (i + 1) 
-					+ " => " + Integer.toString(tempArray[0]) 
-					+ " + " + Integer.toString(tempArray[1]) + "\n";
-		}
-		return s;
+		return game.getRollsForTurn(game.getCurrentRoll());
 	}
 	
-	public Player getPlayer() {
-		return player;
+	public Player getPlayer(int index) {
+		return game.getPlayer(index);
 	}
 	
 	public void endTurn() {
-		turn.endTurn();
+		game.endTurn();
 	}
 
-	public Boolean rollIsSkunk() {
-		return roll.isSkunk();
-	}
-	
-	public Boolean rollIsDeuce() {
-		return roll.isDeuce();
+	public Boolean currentRollIsSkunk() {
+		return game.rollIsSkunk(game.getCurrentRoll());
 	}
 	
-	public Boolean rollIsDouble() {
-		return roll.isDouble();
+	public Boolean currentRollIsDeuce() {
+		return game.rollIsDeuce(game.getCurrentRoll());
 	}
 	
-	public String getRollToString() {
-		return roll.toString();
-	}
-
-
-	public int getPlayerScore() {
-		return player.getPoints();
-	}
-
-
-	public int getTurnScore() {
-		return turn.getScore();
-	}
-
-
-	public int getPlayerChips() {
-		return player.getChips();
-	}
-
-
-	public int getKittyChips() {
-		return kitty.getChips();
+	public Boolean currentRollIsDouble() {
+		return game.rollIsDouble(game.getCurrentRoll());
 	}
 	
-	
-	
-	
+	public String getCurrentRollToString() {
+		return game.getRollToString(game.getCurrentRoll());
+	}
+
+
+	public int getCurrentPlayerScore() {
+		return game.getPlayerScore(getCurrentPlayer());
+	}
+
+
+	public int getCurrentTurnScore() {
+		return game.getTurnScore(game.getCurrentTurn());
+	}
 
 }
