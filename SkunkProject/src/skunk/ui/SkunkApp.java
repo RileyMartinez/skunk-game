@@ -26,6 +26,16 @@ public class SkunkApp {
 			controller.addPlayer(playerName);
 		}
 		
+		StdOut.println("View game rules? (y/n):");
+		userInput = StdIn.readLine().toLowerCase();
+		
+		if (userInput.equalsIgnoreCase("y")) {
+			StdOut.println(controller.getGameRules());
+			StdOut.println("^Scroll up to view game rules.^");
+		}
+		
+		promptEnterKey();
+		
 		controller.startGame();
 		controller.startNewTurn();
 		
