@@ -14,7 +14,7 @@ public class Game {
 	private Kitty kitty;
 	private ArrayList<Roll> rolls;
 	private ArrayList<Player> players;
-	private int playerIndex = -1; 
+	private static int playerIndex = -1; 
 	private ArrayList<Turn> turns;
 	private static final String GAME_RULES = "Rules of Skunk\r\n" + 
 			"\r\n" + 
@@ -223,28 +223,22 @@ public class Game {
 	public Player getCurrentPlayer() {
 		int numTurns = turns.size(); 
 		int numPlayers = players.size(); 
-		Player currentPlayer;
+		Player currentPlayer = null;
 		
-		
-		if(playerIndex == -1 && numPlayers > 0) { 
-			playerIndex = 0; 
-			currentPlayer = players.get(0);
-			//playerIndex++; 
-			System.out.println("test");
-		}
-		else if (playerIndex <= numPlayers) {
+		if(this.playerIndex == -1 && numPlayers > 0) { 
+			playerIndex = 0;
 			currentPlayer = players.get(playerIndex);
-			//playerIndex++;
-			System.out.println("second case");
+			System.out.println(currentPlayer);
 		}
-		else 
-			//if (playerIndex > numPlayers) 
-			{ 
+		else if (this.playerIndex != -1 && playerIndex < numPlayers && numPlayers > 0) {
+			currentPlayer = players.get(playerIndex);
+		}
+		else if (this.playerIndex >= numPlayers && numPlayers > 0) { 
 			playerIndex = playerIndex - numPlayers; 
-			currentPlayer = players.get(playerIndex);
-			//playerIndex++;
-			System.out.println("third case");
 		}
+		
+		
+		
 		
 		playerIndex++;
 		return currentPlayer;
@@ -260,8 +254,9 @@ public class Game {
 		myGame.startNewTurn();
 		Player contestant = myGame.getCurrentPlayer(); 
 		//assertEquals("test","test");
-		assertEquals("Nicole Burns",contestant.getName());
-		
+		//assertEquals("Nicole Burns",contestant.getName());
+		System.out.println(contestant);
+		System.out.println(""+ playerIndex);
 		//myGame.startNewTurn();
 		//contestant = myGame.getCurrentPlayer();
 		//assertEquals("Riley Martinez",contestant.getName());
