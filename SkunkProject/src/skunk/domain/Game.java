@@ -1,5 +1,7 @@
 package skunk.domain;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 
 
@@ -12,6 +14,7 @@ public class Game {
 	private Kitty kitty;
 	private ArrayList<Roll> rolls;
 	private ArrayList<Player> players;
+	private int playerIndex = -1; 
 	private ArrayList<Turn> turns;
 	private static final String GAME_RULES = "Rules of Skunk\r\n" + 
 			"\r\n" + 
@@ -218,9 +221,58 @@ public class Game {
 
 	//method to return whose turn it currently is
 	public Player getCurrentPlayer() {
-		int index = (turns.size()+1)%(players.size()); 
-		Player currentPlayer = players.get(index);
+		int numTurns = turns.size(); 
+		int numPlayers = players.size(); 
+		Player currentPlayer;
+		
+		
+		if(playerIndex == -1 && numPlayers > 0) { 
+			playerIndex = 0; 
+			currentPlayer = players.get(0);
+			//playerIndex++; 
+			System.out.println("test");
+		}
+		else if (playerIndex <= numPlayers) {
+			currentPlayer = players.get(playerIndex);
+			//playerIndex++;
+			System.out.println("second case");
+		}
+		else 
+			//if (playerIndex > numPlayers) 
+			{ 
+			playerIndex = playerIndex - numPlayers; 
+			currentPlayer = players.get(playerIndex);
+			//playerIndex++;
+			System.out.println("third case");
+		}
+		
+		playerIndex++;
 		return currentPlayer;
+	}
+	
+	public static void main(String[] args) { 
+		Game myGame = new Game(); 
+		myGame.addPlayer("Nicole Burns");
+		//myGame.addPlayer("Riley Martinez");
+		//myGame.addPlayer("Some Random");
+		//myGame.addPlayer("Another Person");
+		myGame.startGame();
+		myGame.startNewTurn();
+		Player contestant = myGame.getCurrentPlayer(); 
+		//assertEquals("test","test");
+		assertEquals("Nicole Burns",contestant.getName());
+		
+		//myGame.startNewTurn();
+		//contestant = myGame.getCurrentPlayer();
+		//assertEquals("Riley Martinez",contestant.getName());
+		
+		//myGame.startNewTurn();
+		//contestant = myGame.getCurrentPlayer();
+		//assertEquals("Some Random",contestant.getName());
+		//
+		//myGame.startNewTurn();
+		//contestant = myGame.getCurrentPlayer();
+		//assertEquals("Nicole Burns",contestant.getName());
 	}
 	
 	public String getCurrentPlayerName() {
@@ -242,5 +294,12 @@ public class Game {
 	public String getGameRules() {
 		return GAME_RULES;
 	}
+
+		  /*public static void main(String[] args) {
+		   int x = 6;
+		    int y = 2;
+		    System.out.println(x % y);
+		  }*/
+		
 
 }
