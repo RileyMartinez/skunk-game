@@ -100,17 +100,17 @@ public class TestGame {
 		Player contestant = myGame.getCurrentPlayer(); 
 		assertEquals("Nicole Burns",contestant.getName());
 		
-		//myGame.startNewTurn();
-		//contestant = myGame.getCurrentPlayer();
-		//assertEquals("Riley Martinez",contestant.getName());
+		myGame.startNewTurn();
+		contestant = myGame.getCurrentPlayer();
+		assertEquals("Riley Martinez",contestant.getName());
 		
-		//myGame.startNewTurn();
-		//contestant = myGame.getCurrentPlayer();
-		//assertEquals("Some Random",contestant.getName());
+		myGame.startNewTurn();
+		contestant = myGame.getCurrentPlayer();
+		assertEquals("Some Random",contestant.getName());
 		
-		//myGame.startNewTurn();
-		//contestant = myGame.getCurrentPlayer();
-		//assertEquals("Nicole Burns",contestant.getName());
+		myGame.startNewTurn();
+		contestant = myGame.getCurrentPlayer();
+		assertEquals("Nicole Burns",contestant.getName());
 	}
 
 	

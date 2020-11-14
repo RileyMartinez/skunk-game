@@ -7,15 +7,15 @@ import java.util.ArrayList;
 
 public class Game {
 
-	private static Player currentPlayer; 
+	private Player currentPlayer; 
 	private boolean isStarted = false; 
 	private boolean isCompleted = false;
-	private static int numberOfTurns; 
+	private int numberOfTurns; 
 	private boolean turnInProgress = false;
 	private Kitty kitty;
 	private ArrayList<Roll> rolls;
 	private ArrayList<Player> players;
-	private static int playerIndex = -1; 
+	private int playerIndex = -1; 
 	private ArrayList<Turn> turns;
 	private static final String GAME_RULES = "Rules of Skunk\r\n" + 
 			"\r\n" + 
