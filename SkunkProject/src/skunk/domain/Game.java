@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Game {
 
+	static Player deleteMe; 
 	private boolean isStarted = false; 
 	private boolean isCompleted = false;
 	private int numberOfTurns; 
@@ -175,7 +176,8 @@ public class Game {
 	public void startNewTurn() {
 		if(this.isStarted == true) { 
 			turnInProgress = true; 
-			Turn myTurn = new Turn(this.getCurrentPlayer());
+			deleteMe = this.getCurrentPlayer();
+			Turn myTurn = new Turn(this.deleteMe);
 			Roll myRoll = new Roll();
 			turns.add(myTurn); 
 			rolls.add(myRoll);
@@ -223,7 +225,7 @@ public class Game {
 	public Player getCurrentPlayer() {
 		int numTurns = turns.size(); 
 		int numPlayers = players.size(); 
-		Player currentPlayer = null;
+		Player currentPlayer = null; // = new Player ("Abby");
 		
 		if(this.playerIndex == -1 && numPlayers > 0) { 
 			playerIndex = 0;
@@ -240,6 +242,7 @@ public class Game {
 		
 		
 		
+		
 		playerIndex++;
 		return currentPlayer;
 	}
@@ -252,10 +255,10 @@ public class Game {
 		//myGame.addPlayer("Another Person");
 		myGame.startGame();
 		myGame.startNewTurn();
-		Player contestant = myGame.getCurrentPlayer(); 
+		//Player contestant = myGame.getCurrentPlayer(); 
 		//assertEquals("test","test");
 		//assertEquals("Nicole Burns",contestant.getName());
-		System.out.println(contestant);
+		System.out.println(deleteMe);
 		System.out.println(""+ playerIndex);
 		//myGame.startNewTurn();
 		//contestant = myGame.getCurrentPlayer();
