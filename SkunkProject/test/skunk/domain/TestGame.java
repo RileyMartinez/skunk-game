@@ -91,13 +91,13 @@ public class TestGame {
 	public void testWhoseTurnIsIt() { 
 		Game myGame = new Game(); 
 		myGame.addPlayer("Nicole Burns");
-		//myGame.addPlayer("Riley Martinez");
-		//myGame.addPlayer("Some Random");
-		//myGame.addPlayer("Another Person");
+		myGame.addPlayer("Riley Martinez");
+		myGame.addPlayer("Some Random");
+		
 		myGame.startGame();
+		
 		myGame.startNewTurn();
 		Player contestant = myGame.getCurrentPlayer(); 
-		//assertEquals("test","test");
 		assertEquals("Nicole Burns",contestant.getName());
 		
 		//myGame.startNewTurn();
@@ -107,7 +107,7 @@ public class TestGame {
 		//myGame.startNewTurn();
 		//contestant = myGame.getCurrentPlayer();
 		//assertEquals("Some Random",contestant.getName());
-		//
+		
 		//myGame.startNewTurn();
 		//contestant = myGame.getCurrentPlayer();
 		//assertEquals("Nicole Burns",contestant.getName());

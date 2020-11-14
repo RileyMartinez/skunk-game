@@ -247,7 +247,7 @@ public class Game {
 		return currentPlayer;
 	}
 	
-	public static void main(String[] args) { 
+	/*public static void main(String[] args) { 
 		Game myGame = new Game(); 
 		myGame.addPlayer("Nicole Burns");
 		myGame.addPlayer("Riley Martinez");
@@ -310,7 +310,7 @@ public class Game {
 		//myGame.startNewTurn();
 		//contestant = myGame.getCurrentPlayer();
 		//assertEquals("Nicole Burns",contestant.getName());
-	}
+	}*/
 	
 	public Player getCurrentPlayer() { 
 		return this.currentPlayer;
