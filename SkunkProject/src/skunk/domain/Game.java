@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class Game {
 
-	static Player deleteMe; 
+	private static Player currentPlayer; 
 	private boolean isStarted = false; 
 	private boolean isCompleted = false;
-	private int numberOfTurns; 
+	private static int numberOfTurns; 
 	private boolean turnInProgress = false;
 	private Kitty kitty;
 	private ArrayList<Roll> rolls;
@@ -176,14 +176,16 @@ public class Game {
 	public void startNewTurn() {
 		if(this.isStarted == true) { 
 			turnInProgress = true; 
-			deleteMe = this.getCurrentPlayer();
-			Turn myTurn = new Turn(this.deleteMe);
+			currentPlayer = this.determineCurrentPlayer();
+			Turn myTurn = new Turn(this.currentPlayer);
 			Roll myRoll = new Roll();
 			turns.add(myTurn); 
 			rolls.add(myRoll);
+			this.numberOfTurns = turns.size();
 		}
 		else
 			turnInProgress = false; 
+			this.numberOfTurns = turns.size();
 	}
 
 	public int getNumberOfTurns() {
@@ -222,26 +224,24 @@ public class Game {
 	}
 
 	//method to return whose turn it currently is
-	public Player getCurrentPlayer() {
+	//making this method private so it can't be called outside of the game program. 
+	//Will solve a duplication issue
+	private Player determineCurrentPlayer() {
 		int numTurns = turns.size(); 
 		int numPlayers = players.size(); 
-		Player currentPlayer = null; // = new Player ("Abby");
+		//Player currentPlayer = null; // = new Player ("Abby");
 		
 		if(this.playerIndex == -1 && numPlayers > 0) { 
 			playerIndex = 0;
 			currentPlayer = players.get(playerIndex);
-			System.out.println(currentPlayer);
 		}
 		else if (this.playerIndex != -1 && playerIndex < numPlayers && numPlayers > 0) {
 			currentPlayer = players.get(playerIndex);
 		}
 		else if (this.playerIndex >= numPlayers && numPlayers > 0) { 
-			playerIndex = playerIndex - numPlayers; 
+			playerIndex = playerIndex - numPlayers;
+			currentPlayer = players.get(playerIndex);
 		}
-		
-		
-		
-		
 		
 		playerIndex++;
 		return currentPlayer;
@@ -250,20 +250,59 @@ public class Game {
 	public static void main(String[] args) { 
 		Game myGame = new Game(); 
 		myGame.addPlayer("Nicole Burns");
-		//myGame.addPlayer("Riley Martinez");
-		//myGame.addPlayer("Some Random");
+		myGame.addPlayer("Riley Martinez");
+		myGame.addPlayer("Some Random");
 		//myGame.addPlayer("Another Person");
 		myGame.startGame();
 		myGame.startNewTurn();
-		//Player contestant = myGame.getCurrentPlayer(); 
+		Player contestant = myGame.getCurrentPlayer(); 
 		//assertEquals("test","test");
 		//assertEquals("Nicole Burns",contestant.getName());
-		System.out.println(deleteMe);
+		System.out.println(contestant);
 		System.out.println(""+ playerIndex);
-		//myGame.startNewTurn();
-		//contestant = myGame.getCurrentPlayer();
+		System.out.println(""+ numberOfTurns);
+		myGame.startNewTurn();
+		contestant = myGame.getCurrentPlayer();
 		//assertEquals("Riley Martinez",contestant.getName());
-		
+		System.out.println(contestant);
+		System.out.println(""+ playerIndex);
+		System.out.println(""+ numberOfTurns);
+		myGame.startNewTurn();
+		contestant = myGame.getCurrentPlayer();
+		//assertEquals("Riley Martinez",contestant.getName());
+		System.out.println(contestant);
+		System.out.println(""+ playerIndex);
+		System.out.println(""+ numberOfTurns);
+		myGame.startNewTurn();
+		contestant = myGame.getCurrentPlayer();
+		//assertEquals("Riley Martinez",contestant.getName());
+		System.out.println(contestant);
+		System.out.println(""+ playerIndex);
+		System.out.println(""+ numberOfTurns);
+		myGame.startNewTurn();
+		contestant = myGame.getCurrentPlayer();
+		//assertEquals("Riley Martinez",contestant.getName());
+		System.out.println(contestant);
+		System.out.println(""+ playerIndex);
+		System.out.println(""+ numberOfTurns);
+		myGame.startNewTurn();
+		contestant = myGame.getCurrentPlayer();
+		//assertEquals("Riley Martinez",contestant.getName());
+		System.out.println(contestant);
+		System.out.println(""+ playerIndex);
+		System.out.println(""+ numberOfTurns);
+		myGame.startNewTurn();
+		contestant = myGame.getCurrentPlayer();
+		//assertEquals("Riley Martinez",contestant.getName());
+		System.out.println(contestant);
+		System.out.println(""+ playerIndex);
+		System.out.println(""+ numberOfTurns);
+		myGame.startNewTurn();
+		contestant = myGame.getCurrentPlayer();
+		//assertEquals("Riley Martinez",contestant.getName());
+		System.out.println(contestant);
+		System.out.println(""+ playerIndex);
+		System.out.println(""+ numberOfTurns);
 		//myGame.startNewTurn();
 		//contestant = myGame.getCurrentPlayer();
 		//assertEquals("Some Random",contestant.getName());
@@ -271,6 +310,10 @@ public class Game {
 		//myGame.startNewTurn();
 		//contestant = myGame.getCurrentPlayer();
 		//assertEquals("Nicole Burns",contestant.getName());
+	}
+	
+	public Player getCurrentPlayer() { 
+		return this.currentPlayer;
 	}
 	
 	public String getCurrentPlayerName() {
