@@ -336,11 +336,6 @@ public class Game {
 		return GAME_RULES;
 	}
 
-		  /*public static void main(String[] args) {
-		   int x = 6;
-		    int y = 2;
-		    System.out.println(x % y);
-		  }*/
-		
+
 
 }
