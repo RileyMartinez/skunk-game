@@ -51,16 +51,28 @@ public class SkunkController {
 	public void endTurn() {
 		game.endTurn();
 	}
+	
+	public void checkForFinalRound() {
+		game.checkForFinalRound();
+	}
+	
+	public void checkForEndOfGame() {
+		game.checkForEndOfGame();
+	}
+	
+	public boolean isGameCompleted() {
+		return game.isCompleted();
+	}
 
-	public Boolean currentRollIsSkunk() {
+	public boolean currentRollIsSkunk() {
 		return game.rollIsSkunk(game.getCurrentRoll());
 	}
 	
-	public Boolean currentRollIsDeuce() {
+	public boolean currentRollIsDeuce() {
 		return game.rollIsDeuce(game.getCurrentRoll());
 	}
 	
-	public Boolean currentRollIsDouble() {
+	public boolean currentRollIsDouble() {
 		return game.rollIsDouble(game.getCurrentRoll());
 	}
 	

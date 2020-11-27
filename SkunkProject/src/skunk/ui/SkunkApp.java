@@ -38,8 +38,7 @@ public class SkunkApp {
 		
 		controller.startGame();
 		controller.startNewTurn();
-		
-		StdOut.println("\n" + controller.getCurrentPlayerName() + "'s turn has started.\n");
+		StdOut.println(controller.getCurrentPlayerName() + "'s turn has started.\n");
 		
 		while (isRunning) {
 			StdOut.println(controller.getCurrentPlayerName() + ", select from the following options: \n");
@@ -60,15 +59,31 @@ public class SkunkApp {
 					if (controller.currentRollIsSkunk() || controller.currentRollIsDeuce() || controller.currentRollIsDouble()) {
 						StdOut.println("End Of Turn Summary: \n\n" + controller.getCurrentPlayer() +
 								"\n\nRolls for the Turn: \n" + controller.getRollsForTurn());
+						promptEnterKey();
 						controller.endTurn();
-						isRunning = false;
+						controller.checkForFinalRound();
+						controller.checkForEndOfGame();
+						if (controller.isGameCompleted()) {
+							isRunning = false;
+							break;
+						}
+						controller.startNewTurn();
+						StdOut.println(controller.getCurrentPlayerName() + "'s turn has started.\n");
 					}
 					break;
 				case "e":
 					controller.endTurn();
 					StdOut.println("End Of Turn Summary: \n\n" + controller.getCurrentPlayer() + 
 							"\n\nRolls for the Turn: \n" + controller.getRollsForTurn());
-					isRunning = false;
+					promptEnterKey();
+					controller.checkForFinalRound();
+					controller.checkForEndOfGame();
+					if (controller.isGameCompleted()) {
+						isRunning = false;
+						break;
+					}
+					controller.startNewTurn();
+					StdOut.println(controller.getCurrentPlayerName() + "'s turn has started.\n");
 					break;
 				case "q":
 					isRunning = false;
@@ -78,7 +93,7 @@ public class SkunkApp {
 			}
 		}
 		promptEnterKey();
-		StdOut.println("That's the end of the demo. Thanks for playing!");
+		StdOut.println("That's the end of the game. Thanks for playing!");
 	}
 	
 	public static void promptEnterKey() {

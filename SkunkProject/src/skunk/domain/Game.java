@@ -4,13 +4,17 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 
+import edu.princeton.cs.introcs.StdOut;
+
 
 public class Game {
 
 	private Player currentPlayer; 
 	private boolean isStarted = false; 
 	private boolean isCompleted = false;
-	private int numberOfTurns; 
+	private boolean isLastRound = false;
+	private int numberOfTurns;
+	private int turnsRemainingInFinalRound;
 	private boolean turnInProgress = false;
 	private Kitty kitty;
 	private ArrayList<Roll> rolls;
@@ -113,6 +117,25 @@ public class Game {
 	
 	public void endTurn() {
 		getCurrentTurn().endTurn();
+	}
+	
+	public void checkForFinalRound()	{
+		Player currentPlayer = getCurrentPlayer();
+		if (currentPlayer.getPoints() >= 100 && !isLastRound) {
+			StdOut.println("Final round has started! Try to beat" + currentPlayer.getName() + "'s score!\n"
+					+ "Score to beat: " + currentPlayer.getPoints());
+			isLastRound = true;
+			turnsRemainingInFinalRound = players.size() - 1;
+		}
+	}
+	
+	public void checkForEndOfGame() {
+		if (isLastRound) {
+			if (turnsRemainingInFinalRound == 0) {
+				completeGame();
+			}
+			turnsRemainingInFinalRound--;
+		}
 	}
 
 	public Boolean rollIsSkunk(Roll roll) {
@@ -330,6 +353,10 @@ public class Game {
 	
 	public Roll getCurrentRoll() {
 		return rolls.get(rolls.size() - 1);
+	}
+	
+	public boolean isCompleted() {
+		return isCompleted;
 	}
 	
 	public String getGameRules() {
