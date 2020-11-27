@@ -1,7 +1,5 @@
 package skunk.domain;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 
 import edu.princeton.cs.introcs.StdOut;
@@ -123,9 +121,60 @@ public class Game {
 		Player currentPlayer = getCurrentPlayer();
 		if (currentPlayer.getPoints() >= 100 && !isLastRound) {
 			StdOut.println("Final round has started! Try to beat " + currentPlayer.getName() + "'s score!\n"
-					+ "Score to beat: " + currentPlayer.getPoints());
+					+ "Score to beat: " + currentPlayer.getPoints() + "\n");
 			isLastRound = true;
 			turnsRemainingInFinalRound = players.size() - 1;
+		}
+	}
+	
+	public Player getWinnerSoFar() {
+		Player winnerSoFar = players.get(0);
+		for (Player player : players) {
+			if (player.getPoints() > winnerSoFar.getPoints()) {
+				winnerSoFar = player;
+			}
+		}
+		return winnerSoFar;
+	}
+	
+	public void giveKittyChipsToWinner() {
+		Player winner = getWinnerSoFar();
+		int purse = kitty.getChips();
+		winner.addChips(purse);
+		kitty.removeChips(purse);
+		StdOut.println("Kitty (" + purse + " chips) => " + winner.getName());
+	}
+	
+	// Accounts for if a player runs out of chips.
+	// Winner receives whatever chips the losing player has left.
+	public void giveLoserChipsToWinner() {
+		Player winner = getWinnerSoFar();
+		for (Player player : players) {
+			if (player == winner) {
+				continue;
+			} else {
+				if (player.getPoints() == 0) {
+					if (player.getChips() < 10) {
+						StdOut.println(player.getName() + " (" + player.getChips() + "chips) => " + winner.getName());
+						winner.addChips(player.getChips());
+						player.removeChips(player.getChips());
+					} else {
+						StdOut.println(player.getName() + " (10 chips) => " + winner.getName());
+						winner.addChips(10);
+						player.removeChips(10);
+					}
+				} else {
+					if (player.getChips() < 5) {
+						StdOut.println(player.getName() + " (" + player.getChips() + "chips) => " + winner.getName());
+						winner.addChips(player.getChips());
+						player.removeChips(player.getChips());
+					} else {
+						StdOut.println(player.getName() + " (5 chips) => " + winner.getName());
+						winner.addChips(5);
+						player.removeChips(5);
+					}
+				}
+			}
 		}
 	}
 	
@@ -343,6 +392,10 @@ public class Game {
 		return getCurrentPlayer().getName();
 	}
 	
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+	
 	public Turn getCurrentTurn() {
 		return turns.get(turns.size() - 1);
 	}
@@ -363,6 +416,17 @@ public class Game {
 		return GAME_RULES;
 	}
 
-
-
+	public String toString() {
+		Player winner = getWinnerSoFar();
+		String gameSummary = "| Player\t|\tScore\t|\tChips\t|\n";
+		for (Player player : players) {
+			String playerName = player.getName();
+			if (player == winner) {
+				playerName = player.getName() + "*";
+			}
+			gameSummary += "\n| " + playerName + "\t|\t" + player.getPoints() + "\t|\t" + player.getChips() + "\t|\n";
+		}
+		gameSummary += "\n* = Winner\n";
+		return gameSummary;
+	}
 }

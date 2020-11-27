@@ -1,5 +1,7 @@
 package skunk.domain;
 
+import java.util.ArrayList;
+
 public class SkunkController {
 	
 	private Game game;
@@ -48,8 +50,17 @@ public class SkunkController {
 		return game.getPlayer(index);
 	}
 	
+	public ArrayList<Player> getPlayers() {
+		return game.getPlayers();
+	}
+	
 	public void endTurn() {
 		game.endTurn();
+	}
+	
+	public void distributeChipsToWinner() {
+		game.giveKittyChipsToWinner();
+		game.giveLoserChipsToWinner();
 	}
 	
 	public void checkForFinalRound() {
@@ -85,6 +96,9 @@ public class SkunkController {
 		return game.getPlayerScore(getCurrentPlayer());
 	}
 
+	public int getChipsInKitty() {
+		return game.getKittyChips();
+	}
 
 	public int getCurrentTurnScore() {
 		return game.getTurnScore(game.getCurrentTurn());
@@ -93,5 +107,8 @@ public class SkunkController {
 	public String getGameRules() {
 		return game.getGameRules();
 	}
-
+	
+	public Game getGameSummary() {
+		return game;
+	}
 }

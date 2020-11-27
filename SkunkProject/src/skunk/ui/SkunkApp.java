@@ -15,8 +15,7 @@ public class SkunkApp {
 		int playerCount;
 		String userInput;
 		
-		StdOut.println("Welcome to SkunkApp Demo v1.2. This demo is single player, "
-				+ "and we will only play for one turn. Let's go!\n");
+		StdOut.println("Welcome to SkunkApp  v1.3. Let's play!\n");
 		StdOut.println("Enter number of players: ");
 		playerCount = Integer.parseInt(StdIn.readLine());
 		
@@ -57,13 +56,17 @@ public class SkunkApp {
 					StdOut.println("Current Turn Score: " + controller.getCurrentTurnScore());
 					promptEnterKey();
 					if (controller.currentRollIsSkunk() || controller.currentRollIsDeuce() || controller.currentRollIsDouble()) {
-						StdOut.println("End Of Turn Summary: \n\n" + controller.getCurrentPlayer() +
-								"\n\nRolls for the Turn: \n" + controller.getRollsForTurn());
+						StdOut.println("End Of Turn Summary: \n\n" + controller.getCurrentPlayer() + 
+								"\n\nRolls for the Turn: \n" + controller.getRollsForTurn() +
+								"\nChips in Kitty: " + controller.getChipsInKitty());
 						promptEnterKey();
 						controller.endTurn();
 						controller.checkForFinalRound();
 						controller.checkForEndOfGame();
 						if (controller.isGameCompleted()) {
+							StdOut.println("Distributing chips to the winner...\n");
+							controller.distributeChipsToWinner();
+							promptEnterKey();
 							isRunning = false;
 							break;
 						}
@@ -74,11 +77,15 @@ public class SkunkApp {
 				case "e":
 					controller.endTurn();
 					StdOut.println("End Of Turn Summary: \n\n" + controller.getCurrentPlayer() + 
-							"\n\nRolls for the Turn: \n" + controller.getRollsForTurn());
+							"\n\nRolls for the Turn: \n" + controller.getRollsForTurn() +
+							"\nChips in Kitty: " + controller.getChipsInKitty());
 					promptEnterKey();
 					controller.checkForFinalRound();
 					controller.checkForEndOfGame();
 					if (controller.isGameCompleted()) {
+						StdOut.println("Distributing chips to the winner...\n");
+						controller.distributeChipsToWinner();
+						promptEnterKey();
 						isRunning = false;
 						break;
 					}
@@ -86,12 +93,16 @@ public class SkunkApp {
 					StdOut.println(controller.getCurrentPlayerName() + "'s turn has started.\n");
 					break;
 				case "q":
+					StdOut.println("User quit the game. No chips are distributed...");
+					promptEnterKey();
 					isRunning = false;
 					break;
 				default:
-					StdOut.println("Invalid user input.");	
+					StdOut.println("Invalid user input.\n");	
 			}
 		}
+		StdOut.println("End Of Game Summary: \n\n");
+		StdOut.println(controller.getGameSummary());
 		promptEnterKey();
 		StdOut.println("That's the end of the game. Thanks for playing!");
 	}
