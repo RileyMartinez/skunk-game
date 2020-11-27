@@ -122,7 +122,7 @@ public class Game {
 	public void checkForFinalRound()	{
 		Player currentPlayer = getCurrentPlayer();
 		if (currentPlayer.getPoints() >= 100 && !isLastRound) {
-			StdOut.println("Final round has started! Try to beat" + currentPlayer.getName() + "'s score!\n"
+			StdOut.println("Final round has started! Try to beat " + currentPlayer.getName() + "'s score!\n"
 					+ "Score to beat: " + currentPlayer.getPoints());
 			isLastRound = true;
 			turnsRemainingInFinalRound = players.size() - 1;
