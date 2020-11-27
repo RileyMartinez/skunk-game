@@ -78,4 +78,8 @@ public class SkunkController {
 		return game.getTurnScore(game.getCurrentTurn());
 	}
 
+	public String getGameRules() {
+		return game.getGameRules();
+	}
+
 }

@@ -22,7 +22,7 @@ public class Game {
 			"DIRECTIONS FOR PLAYING\r\n" + 
 			"\r\n" + 
 			"The object of the game is to accumulate a score of 100 points or more. A score is made by rolling the dice\r\n" +
-			"and combining the points on the two dice.\r\n" + 
+			"and combining the points on the two dice.\r\n\r\n" + 
 			"For example: A 4 and 5 would be 9 points - if the player decides to take another roll of the dice and\r\n" + 
 			"turns up a 3 and 5 (8 points), he would then have an accumulated total of 17 points for the two rolls.\r\n" + 
 			"The player has the privilege of continuing to shake to increase his score or of passing the dice to wait\r\n" +
@@ -40,9 +40,9 @@ public class Game {
 			"There are sufficient chips in the box to allow 8 players to start with 50 chips by placing a par value of \"one\" on white chips, 5 for 1 on red chips and 10 for 1 on the blue chips.\r\n" + 
 			"\r\n" + 
 			"The first player to accumulate a total of 100 or more points can continue to score as many points over 100 as he believes is needed to win.\r\n" +
-			"When he decides to stop, his total score is the “goal.” Each succeeding player receives one more chance to better the goal and end the game.\r\n" + 
+			"When he decides to stop, his total score is the \"goal.\" Each succeeding player receives one more chance to better the goal and end the game.\r\n" + 
 			"\r\n" + 
-			"The winner of each game collects all chips in \"kitty\" and in addition ﬁve chips from each losing player or 10 chips from any player without a score.\r\n";
+			"The winner of each game collects all chips in \"kitty\" and in addition five chips from each losing player or 10 chips from any player without a score.\r\n";
 	
 	public Game() {
 		this.kitty = new Kitty();
