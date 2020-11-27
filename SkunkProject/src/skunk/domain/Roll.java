@@ -128,7 +128,8 @@ public class Roll {
 		} else if (isDeuce) {
 			s = "big oof, you rolled a deuce! You lose 2 chips to the Kitty.\n";
 		} else if (isDouble) {
-			s = "really big oof, you rolled a double skunk! You lose 4 chips to the Kitty.\n";
+			s = "really big oof, you rolled a double skunk! You lose 4 chips to the Kitty, "
+					+ "and your total points for the game have been reset to 0.\n";
 		}
 		return s += "Roll #" + getRollHistory().size() + "\n"
 				+ "Roll Total: " + getLastDiceRoll() + " => " 
