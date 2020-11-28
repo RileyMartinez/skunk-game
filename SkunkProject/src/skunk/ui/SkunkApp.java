@@ -9,7 +9,7 @@ public class SkunkApp {
 	
 	public static void main(String[] args) {
 		
-		Boolean isRunning = true;
+		boolean isRunning = true;
 		controller = new SkunkController();
 		String playerName;
 		int playerCount;
@@ -26,7 +26,7 @@ public class SkunkApp {
 		}
 		
 		StdOut.println("View game rules? (y/n):");
-		userInput = StdIn.readLine().toLowerCase();
+		userInput = StdIn.readLine();
 		
 		if (userInput.equalsIgnoreCase("y")) {
 			StdOut.println(controller.getGameRules());
@@ -50,66 +50,91 @@ public class SkunkApp {
 			switch (userInput) {
 				case "r":
 					controller.rollAndUpdateScores();
-					StdOut.println("\n" + controller.getCurrentPlayerName() + ", " + controller.getCurrentRollToString());
-					promptEnterKey();
-					StdOut.println("Current Player Score: " + controller.getCurrentPlayerScore());
-					StdOut.println("Current Turn Score: " + controller.getCurrentTurnScore());
-					promptEnterKey();
+					printEndOfRollSummary();
 					if (controller.currentRollIsSkunk() || controller.currentRollIsDeuce() || controller.currentRollIsDouble()) {
-						StdOut.println("End Of Turn Summary: \n\n" + controller.getCurrentPlayer() + 
-								"\n\nRolls for the Turn: \n" + controller.getRollsForTurn() +
-								"\nChips in Kitty: " + controller.getChipsInKitty());
-						promptEnterKey();
-						controller.endTurn();
-						controller.checkForFinalRound();
-						controller.checkForEndOfGame();
+						resolveTurn();
 						if (controller.isGameCompleted()) {
-							StdOut.println("Distributing chips to the winner...\n");
-							controller.distributeChipsToWinner();
-							promptEnterKey();
+							cleanup();
 							isRunning = false;
 							break;
 						}
-						controller.startNewTurn();
-						StdOut.println(controller.getCurrentPlayerName() + "'s turn has started.\n");
+						startNextTurn();
 					}
 					break;
 				case "e":
-					controller.endTurn();
-					StdOut.println("End Of Turn Summary: \n\n" + controller.getCurrentPlayer() + 
-							"\n\nRolls for the Turn: \n" + controller.getRollsForTurn() +
-							"\nChips in Kitty: " + controller.getChipsInKitty());
-					promptEnterKey();
-					controller.checkForFinalRound();
-					controller.checkForEndOfGame();
+					resolveTurn();
 					if (controller.isGameCompleted()) {
-						StdOut.println("Distributing chips to the winner...\n");
-						controller.distributeChipsToWinner();
-						promptEnterKey();
+						cleanup();
 						isRunning = false;
 						break;
 					}
-					controller.startNewTurn();
-					StdOut.println(controller.getCurrentPlayerName() + "'s turn has started.\n");
+					startNextTurn();
 					break;
 				case "q":
-					StdOut.println("User quit the game. No chips are distributed...");
-					promptEnterKey();
-					isRunning = false;
+					isRunning = quitConfirmation();
 					break;
 				default:
 					StdOut.println("Invalid user input.\n");	
 			}
 		}
+		printEndOfGameSummary();
+	}
+	
+	public static void promptEnterKey() {
+		StdOut.println("\nPress \"ENTER\" to continue.\n");
+		StdIn.readLine();
+	}
+	
+	public static void printEndOfRollSummary() {
+		StdOut.println("\n" + controller.getCurrentPlayerName() + ", " + controller.getCurrentRollToString());
+		promptEnterKey();
+		StdOut.println("Current Player Score: " + controller.getCurrentPlayerScore());
+		StdOut.println("Current Turn Score: " + controller.getCurrentTurnScore());
+		promptEnterKey();
+	}
+	
+	public static void printEndOfTurnSummary() {
+		StdOut.println("End Of Turn Summary: \n\n" + controller.getCurrentPlayer() + 
+				"\n\nRolls for the Turn: \n" + controller.getRollsForTurn() +
+				"\nChips in Kitty: " + controller.getChipsInKitty());
+	}
+	
+	public static void printEndOfGameSummary() {
 		StdOut.println("End Of Game Summary: \n\n");
 		StdOut.println(controller.getGameSummary());
 		promptEnterKey();
 		StdOut.println("That's the end of the game. Thanks for playing!");
 	}
 	
-	public static void promptEnterKey() {
-		StdOut.println("\nPress \"ENTER\" to continue.\n");
-		StdIn.readLine();
+	public static boolean quitConfirmation() {
+		StdOut.println("Are you sure you want to quit? (y/n)");
+		String userInput = StdIn.readLine();
+		if (userInput.equalsIgnoreCase("y")) {
+			StdOut.println("User quit the game. No chips are distributed...");
+			promptEnterKey();
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	public static void resolveTurn() {
+		controller.endTurn();
+		printEndOfTurnSummary();
+		promptEnterKey();
+		controller.checkForFinalRound();
+		controller.checkForEndOfGame();
+	}
+	
+	public static void startNextTurn() {
+		controller.startNewTurn();
+		StdOut.println(controller.getCurrentPlayerName() + "'s turn has started.\n");
+	}
+	
+	public static void cleanup() {
+		StdOut.println("Distributing chips to the winner...\n");
+		controller.distributeChipsToWinner();
+		promptEnterKey();
 	}
 	
 }
