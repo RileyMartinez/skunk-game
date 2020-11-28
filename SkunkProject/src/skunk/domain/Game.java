@@ -261,12 +261,10 @@ public class Game {
 	}
 
 	public int getNumberOfTurns() {
-		// TODO Auto-generated method stub
 		return turns.size();
 	}
 
 	public boolean getTurnStatus() {
-		// TODO Auto-generated method stub
 		return turnInProgress;
 	}
 	
@@ -280,18 +278,15 @@ public class Game {
 
 	//returns the number of players in the array list
 	public int getNumberOfPlayers() {
-		// TODO Auto-generated method stub
 		int numberOfPlayers = players.size(); 
 		return numberOfPlayers;
 	}
 
 	public String printPlayers() {
-		// TODO Auto-generated method stub
 		return players.toString();
 	}
 
 	public void clearAllPlayers() {
-		// TODO Auto-generated method stub
 		players.clear();
 	}
 
@@ -318,71 +313,6 @@ public class Game {
 		playerIndex++;
 		return currentPlayer;
 	}
-	
-	/*public static void main(String[] args) { 
-		Game myGame = new Game(); 
-		myGame.addPlayer("Nicole Burns");
-		myGame.addPlayer("Riley Martinez");
-		myGame.addPlayer("Some Random");
-		//myGame.addPlayer("Another Person");
-		myGame.startGame();
-		myGame.startNewTurn();
-		Player contestant = myGame.getCurrentPlayer(); 
-		//assertEquals("test","test");
-		//assertEquals("Nicole Burns",contestant.getName());
-		System.out.println(contestant);
-		System.out.println(""+ playerIndex);
-		System.out.println(""+ numberOfTurns);
-		myGame.startNewTurn();
-		contestant = myGame.getCurrentPlayer();
-		//assertEquals("Riley Martinez",contestant.getName());
-		System.out.println(contestant);
-		System.out.println(""+ playerIndex);
-		System.out.println(""+ numberOfTurns);
-		myGame.startNewTurn();
-		contestant = myGame.getCurrentPlayer();
-		//assertEquals("Riley Martinez",contestant.getName());
-		System.out.println(contestant);
-		System.out.println(""+ playerIndex);
-		System.out.println(""+ numberOfTurns);
-		myGame.startNewTurn();
-		contestant = myGame.getCurrentPlayer();
-		//assertEquals("Riley Martinez",contestant.getName());
-		System.out.println(contestant);
-		System.out.println(""+ playerIndex);
-		System.out.println(""+ numberOfTurns);
-		myGame.startNewTurn();
-		contestant = myGame.getCurrentPlayer();
-		//assertEquals("Riley Martinez",contestant.getName());
-		System.out.println(contestant);
-		System.out.println(""+ playerIndex);
-		System.out.println(""+ numberOfTurns);
-		myGame.startNewTurn();
-		contestant = myGame.getCurrentPlayer();
-		//assertEquals("Riley Martinez",contestant.getName());
-		System.out.println(contestant);
-		System.out.println(""+ playerIndex);
-		System.out.println(""+ numberOfTurns);
-		myGame.startNewTurn();
-		contestant = myGame.getCurrentPlayer();
-		//assertEquals("Riley Martinez",contestant.getName());
-		System.out.println(contestant);
-		System.out.println(""+ playerIndex);
-		System.out.println(""+ numberOfTurns);
-		myGame.startNewTurn();
-		contestant = myGame.getCurrentPlayer();
-		//assertEquals("Riley Martinez",contestant.getName());
-		System.out.println(contestant);
-		System.out.println(""+ playerIndex);
-		System.out.println(""+ numberOfTurns);
-		//myGame.startNewTurn();
-		//contestant = myGame.getCurrentPlayer();
-		//assertEquals("Some Random",contestant.getName());
-		//
-		//myGame.startNewTurn();
-		//contestant = myGame.getCurrentPlayer();
-		//assertEquals("Nicole Burns",contestant.getName());
-	}*/
 	
 	public Player getCurrentPlayer() { 
 		return this.currentPlayer;
