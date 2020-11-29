@@ -101,7 +101,7 @@ public class SkunkApp {
 	
 	public static void printEndOfGameSummary() {
 		StdOut.println("End Of Game Summary: \n\n");
-		StdOut.println(controller.getGameSummary());
+		StdOut.println(controller.getGame());
 		promptEnterKey();
 		StdOut.println("That's the end of the game. Thanks for playing!");
 	}

@@ -2,6 +2,7 @@ package skunk.domain;
 
 import java.util.ArrayList;
 
+// Wrapper class around Game to provide separation between domain and UI layers
 public class SkunkController {
 	
 	private Game game;
@@ -108,7 +109,7 @@ public class SkunkController {
 		return game.getGameRules();
 	}
 	
-	public Game getGameSummary() {
+	public Game getGame() {
 		return game;
 	}
 }

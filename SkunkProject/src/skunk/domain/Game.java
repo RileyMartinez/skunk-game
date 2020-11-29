@@ -7,17 +7,16 @@ import edu.princeton.cs.introcs.StdOut;
 
 public class Game {
 
-	private Player currentPlayer; 
-	private boolean isStarted = false; 
-	private boolean isCompleted = false;
-	private boolean isLastRound = false;
-	private int numberOfTurns;
+	private Player currentPlayer;
+	private int playerIndex;
+	private boolean isStarted;
+	private boolean isCompleted;
+	private boolean isLastRound;
+	private boolean turnInProgress;
 	private int turnsRemainingInFinalRound;
-	private boolean turnInProgress = false;
 	private Kitty kitty;
 	private ArrayList<Roll> rolls;
 	private ArrayList<Player> players;
-	private int playerIndex = -1; 
 	private ArrayList<Turn> turns;
 	private static final String GAME_RULES = "Rules of Skunk\r\n" + 
 			"\r\n" + 
@@ -51,6 +50,10 @@ public class Game {
 		this.rolls = new ArrayList<Roll>();
 		this.players = new ArrayList<Player>(); 
 		this.turns = new ArrayList<Turn>();
+		this.isStarted = false;
+		this.isCompleted = false;
+		this.isLastRound = false;
+		this.playerIndex = -1;
 	}
 
 	public void setPlayerName(Player player, String name) {
@@ -65,18 +68,10 @@ public class Game {
 		return players.get(index);
 	}
 	
-	public void givePlayerChips(Player player, int amount) {
-		player.addChips(amount);
-	}
-	
-	public void takePlayerChips(Player player, int amount) {
-		player.removeChips(amount);
-	}
-	
-	public void givePlayerPoints(Player player, int turnScore) {
-		player.addPoints(turnScore);
-	}
-	
+	/*
+	 * Rolls dice, and checks if a skunk, deuce, or double is rolled and distributes
+	 * chips from the player to the kitty accordingly.
+	 */
 	public void rollAndUpdateScores() {
 		Roll roll = getCurrentRoll();
 		Player player = getCurrentPlayer();
@@ -101,6 +96,7 @@ public class Game {
 		}
 	}
 	
+	// Returns a string that provides a log of the rolls for the current turn.
 	public String getRollsForTurn(Roll roll) {
 		String s = "";
 		ArrayList<int[]> rollHistory = roll.getRollHistory();
@@ -113,11 +109,17 @@ public class Game {
 		return s;
 	}
 	
+	// Adds turn score to the current player's point total.
 	public void endTurn() {
-		getCurrentTurn().endTurn();
+		Turn currentTurn = getCurrentTurn();
+		currentTurn.endTurn();
 	}
 	
-	public void checkForFinalRound()	{
+	/*
+	 * Checks to see if the current player has reached 100 points. Implement this
+	 * method at the end of each turn.
+	 */	
+	public void checkForFinalRound() {
 		Player currentPlayer = getCurrentPlayer();
 		if (currentPlayer.getPoints() >= 100 && !isLastRound) {
 			StdOut.println("Final round has started! Try to beat " + currentPlayer.getName() + "'s score!\n"
@@ -127,6 +129,7 @@ public class Game {
 		}
 	}
 	
+	// Returns the player with the highest point total
 	public Player getWinnerSoFar() {
 		Player winnerSoFar = players.get(0);
 		for (Player player : players) {
@@ -137,6 +140,7 @@ public class Game {
 		return winnerSoFar;
 	}
 	
+	// Distributes chips in Kitty to the winning player.
 	public void giveKittyChipsToWinner() {
 		Player winner = getWinnerSoFar();
 		int purse = kitty.getChips();
@@ -145,8 +149,11 @@ public class Game {
 		StdOut.println("Kitty (" + purse + " chips) => " + winner.getName());
 	}
 	
-	// Accounts for if a player runs out of chips.
-	// Winner receives whatever chips the losing player has left.
+	/*
+	 * Accounts for if a player runs out of chips. Winner receives whatever chips
+	 * the losing player has left. Distributes chips from losing players to the winning player
+	 * based on the game rules.
+	 */	
 	public void giveLoserChipsToWinner() {
 		Player winner = getWinnerSoFar();
 		for (Player player : players) {
@@ -178,6 +185,11 @@ public class Game {
 		}
 	}
 	
+	/*
+	 * Changes isCompleted global variable to true when turns in final round
+	 * reaches zero. Method to be used in SkunkApp via controller to decrease
+	 * final round counter when a new turn starts.
+	 */	
 	public void checkForEndOfGame() {
 		if (isLastRound) {
 			if (turnsRemainingInFinalRound == 0) {
@@ -233,7 +245,6 @@ public class Game {
 		else {
 			return "The Game has ended";
 		}
-		
 	}
 
 	public void startGame() {
@@ -244,7 +255,7 @@ public class Game {
 		this.isCompleted = true;
 	}
 
-	//Start a new turn IF a game is in progress
+	// Start a new turn IF a game is in progress
 	public void startNewTurn() {
 		if(this.isStarted == true) { 
 			turnInProgress = true; 
@@ -253,11 +264,9 @@ public class Game {
 			Roll myRoll = new Roll();
 			turns.add(myTurn); 
 			rolls.add(myRoll);
-			this.numberOfTurns = turns.size();
 		}
 		else
 			turnInProgress = false; 
-			this.numberOfTurns = turns.size();
 	}
 
 	public int getNumberOfTurns() {
@@ -270,13 +279,13 @@ public class Game {
 	
 	
 	public void addPlayer(String playerName) {
-		if(this.isStarted == false) {
+		if (this.isStarted == false) {
 			Player player = new Player(playerName);
 			players.add(player);
 		}		
 	}
 
-	//returns the number of players in the array list
+	// Returns the number of players in the array list
 	public int getNumberOfPlayers() {
 		int numberOfPlayers = players.size(); 
 		return numberOfPlayers;
@@ -290,13 +299,13 @@ public class Game {
 		players.clear();
 	}
 
-	//method to return whose turn it currently is
-	//making this method private so it can't be called outside of the game program. 
-	//Will solve a duplication issue
+	/*
+	 * Method to return whose turn it currently is. Making this method private
+	 * so it can't be called outside of the game program. Will solve a
+	 * duplication issue
+	 */	
 	private Player determineCurrentPlayer() {
-		int numTurns = turns.size(); 
 		int numPlayers = players.size(); 
-		//Player currentPlayer = null; // = new Player ("Abby");
 		
 		if(this.playerIndex == -1 && numPlayers > 0) { 
 			playerIndex = 0;
@@ -342,10 +351,18 @@ public class Game {
 		return isCompleted;
 	}
 	
+	public boolean isStarted() {
+		return isStarted;
+	}
+	
 	public String getGameRules() {
 		return GAME_RULES;
 	}
-
+	
+	/*
+	 * Prints total score and chip count for each player in the game. Returns a
+	 * string formatted as an end-of-game summary.
+	 */
 	public String toString() {
 		Player winner = getWinnerSoFar();
 		String gameSummary = "| Player\t|\tScore\t|\tChips\t|\n";
@@ -354,7 +371,7 @@ public class Game {
 			if (player == winner) {
 				playerName = player.getName() + "*";
 			}
-			gameSummary += "\n| " + playerName + "\t|\t" + player.getPoints() + "\t|\t" + player.getChips() + "\t|\n";
+			gameSummary += "\n| " + playerName + " \t|\t" + player.getPoints() + "\t|\t" + player.getChips() + "\t|\n";
 		}
 		gameSummary += "\n* = Winner\n";
 		return gameSummary;
