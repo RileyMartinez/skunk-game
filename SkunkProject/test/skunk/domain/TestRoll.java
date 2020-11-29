@@ -85,7 +85,8 @@ public class TestRoll {
 		while (!roll.isDouble()) {
 			roll.rollDiceCheckAndRecord();
 		}
-		String expectedMessage = "really big oof, you rolled a double skunk! You lose 4 chips to the Kitty.\n"
+		String expectedMessage = "really big oof, you rolled a double skunk! You lose 4 chips to the Kitty, "
+				+ "\nand your total points for the game have been reset to 0.\n"
 				+ "Roll #" + roll.getRollHistory().size() + "\n"
 				+ "Roll Total: " + roll.getLastDiceRoll() + " => " 
 				+ roll.getLastDiceRollDie1() + " + " + roll.getLastDiceRollDie2();

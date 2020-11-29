@@ -164,7 +164,7 @@ public class Game {
 			} else {
 				if (player.getPoints() == 0) {
 					if (player.getChips() < 10) {
-						StdOut.println(player.getName() + " (" + player.getChips() + "chips) => " + winner.getName());
+						StdOut.println(player.getName() + " (" + player.getChips() + " chips) => " + winner.getName());
 						winner.addChips(player.getChips());
 						player.removeChips(player.getChips());
 					} else {
@@ -174,7 +174,7 @@ public class Game {
 					}
 				} else {
 					if (player.getChips() < 5) {
-						StdOut.println(player.getName() + " (" + player.getChips() + "chips) => " + winner.getName());
+						StdOut.println(player.getName() + " (" + player.getChips() + " chips) => " + winner.getName());
 						winner.addChips(player.getChips());
 						player.removeChips(player.getChips());
 					} else {
