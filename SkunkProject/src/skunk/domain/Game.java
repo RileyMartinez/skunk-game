@@ -375,7 +375,7 @@ public class Game {
 			if (player == winner) {
 				playerName = player.getName() + "*";
 			}
-			gameSummary += "\n| " + playerName + " \t|\t" + player.getPoints() + "\t|\t" + player.getChips() + "\t|\n";
+			gameSummary += "\n| " + playerName + "     \t|\t" + player.getPoints() + "\t|\t" + player.getChips() + "\t|\n";
 		}
 		gameSummary += "\n* = Winner\n";
 		return gameSummary;
