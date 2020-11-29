@@ -119,14 +119,16 @@ public class Game {
 	 * Checks to see if the current player has reached 100 points. Implement this
 	 * method at the end of each turn.
 	 */	
-	public void checkForFinalRound() {
+	public boolean checkForFinalRound() {
 		Player currentPlayer = getCurrentPlayer();
 		if (currentPlayer.getPoints() >= 100 && !isLastRound) {
 			StdOut.println("Final round has started! Try to beat " + currentPlayer.getName() + "'s score!\n"
 					+ "Score to beat: " + currentPlayer.getPoints() + "\n");
 			isLastRound = true;
 			turnsRemainingInFinalRound = players.size() - 1;
+			return isLastRound;
 		}
+		return isLastRound;
 	}
 	
 	// Returns the player with the highest point total
@@ -190,13 +192,15 @@ public class Game {
 	 * reaches zero. Method to be used in SkunkApp via controller to decrease
 	 * final round counter when a new turn starts.
 	 */	
-	public void checkForEndOfGame() {
+	public boolean checkForEndOfGame() {
 		if (isLastRound) {
 			if (turnsRemainingInFinalRound == 0) {
 				completeGame();
+				return isCompleted;
 			}
 			turnsRemainingInFinalRound--;
 		}
+		return isCompleted;
 	}
 
 	public Boolean rollIsSkunk(Roll roll) {

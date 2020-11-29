@@ -64,12 +64,12 @@ public class SkunkController {
 		game.giveLoserChipsToWinner();
 	}
 	
-	public void checkForFinalRound() {
-		game.checkForFinalRound();
+	public boolean checkForFinalRound() {
+		return game.checkForFinalRound();
 	}
 	
-	public void checkForEndOfGame() {
-		game.checkForEndOfGame();
+	public boolean checkForEndOfGame() {
+		return game.checkForEndOfGame();
 	}
 	
 	public boolean isGameCompleted() {
