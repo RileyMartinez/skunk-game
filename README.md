@@ -1,1 +1,1 @@
-# p_1_skunk
+# Skunk Dice Game
